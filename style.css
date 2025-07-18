@@ -1,118 +1,253 @@
+/* Paleta Slytherin vintage: verdes profundos, grises, plateados y toques mágicos */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Great+Vibes&family=Roboto+Slab&display=swap');
+
 body {
-  font-family: 'Georgia', serif;
-  background: linear-gradient(to bottom, #fff0f5, #fbeaff);
-  color: #4b1f47;
+  background: linear-gradient(135deg, #1a332f, #2a4d3a);
+  color: #d4d9d6;
+  font-family: 'Roboto Slab', serif;
   margin: 0;
-  padding: 2rem;
-  line-height: 1.6;
+  padding: 20px;
 }
 
 h1 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 3rem;
+  color: #a1b48f;
   text-align: center;
-  font-size: 2.5rem;
-  color: #8a0551;
-  margin-bottom: 0.5rem;
-  text-shadow: 1px 1px #fcd2e2;
+  text-shadow: 0 0 5px #9dbb8e, 0 0 10px #799a66;
+  margin-bottom: 40px;
 }
 
-.descripcion {
-  text-align: center;
-  font-style: italic;
-  color: #924e7d;
-  margin-bottom: 2rem;
+.semester {
+  background: rgba(10, 30, 20, 0.75);
+  border: 2px solid #597c54;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 0 15px #4a6a3f;
+  position: relative;
 }
 
-main {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.curso {
-  background: #fff9fb;
-  border: 2px dashed #d8a7c9;
-  border-radius: 12px;
-  padding: 1rem;
-  box-shadow: 0 0 10px rgba(211, 160, 203, 0.2);
-  transition: transform 0.2s ease;
-}
-
-.curso:hover {
-  transform: scale(1.02);
-}
-
-.curso h3 {
-  margin: 0 0 0.5rem;
-  color: #802a5b;
+.semester h2 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #b3c497;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: space-between;
 }
 
-.aprobado {
-  background: #e7f7e9;
-  color: #2e6930;
-  text-decoration: line-through;
-  border: 2px solid #a6d9ab;
-}
-
-input[type="checkbox"] {
-  margin-right: 0.5rem;
-  transform: scale(1.2);
-}
-
-input[type="number"] {
-  width: 60px;
-  padding: 0.3rem;
-  border: 1px solid #d8a7c9;
-  border-radius: 8px;
-  background-color: #fff0f5;
-  color: #4b1f47;
-  font-weight: bold;
-}
-
-.botones {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
-  flex-wrap: wrap;
-}
-
-button {
-  background-color: #c97ba8;
-  border: none;
-  border-radius: 12px;
-  padding: 0.8rem 1.2rem;
-  color: white;
-  font-size: 1rem;
+.semester h2 span {
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  font-size: 1.8rem;
+  padding: 5px 8px;
+  border-radius: 50%;
+  color: #c0d6a9;
+  transition: all 0.3s ease;
+}
+
+.semester h2 span:hover {
+  background-color: #8aa94e;
+  color: #f0f5db;
+  box-shadow: 0 0 8px #8aa94e;
+}
+
+.course-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.course {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(42, 70, 47, 0.5);
+  border: 1.5px solid #738f5c;
+  border-radius: 10px;
+  padding: 12px 20px;
+  margin-bottom: 10px;
+  color: #d9d9d9;
+  font-size: 1.1rem;
+  position: relative;
   transition: background-color 0.3s ease;
 }
 
-button:hover {
-  background-color: #b94b8b;
+.course:hover {
+  background-color: rgba(107, 153, 75, 0.8);
+  cursor: pointer;
 }
 
-#sorpresa {
-  margin: 2rem auto;
-  max-width: 600px;
-  background-color: #fff0f8;
-  color: #802a5b;
-  padding: 1rem 1.5rem;
-  border-radius: 16px;
+.course-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.course-name .eye-icon {
+  cursor: pointer;
+  font-size: 1.3rem;
+  color: #a4b98a;
+  transition: color 0.3s ease;
+}
+
+.course-name .eye-icon:hover {
+  color: #dbe8bc;
+}
+
+.checkbox {
+  margin-right: 15px;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  accent-color: #9bbd59;
+  transition: box-shadow 0.4s ease;
+}
+
+.checkbox:checked {
+  box-shadow: 0 0 8px #b5db7e;
+}
+
+.grade-input {
+  width: 60px;
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: none;
   text-align: center;
-  font-size: 1.2rem;
-  box-shadow: 0 0 10px rgba(211, 160, 203, 0.2);
+  font-weight: bold;
+  font-family: 'Roboto Slab', serif;
+  color: #264d00;
+  background-color: #d0e7a8;
+  box-shadow: inset 0 0 5px #a4be6e;
+  transition: background-color 0.3s ease;
+}
+
+.grade-input:focus {
+  outline: none;
+  background-color: #e2f2b2;
+  box-shadow: 0 0 10px #b5db7e;
+}
+
+.buttons-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btn {
+  background-color: #7b9f43;
+  border: none;
+  padding: 10px 18px;
+  color: #f0f5db;
+  font-weight: 600;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 0 8px #7b9f43;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn:hover {
+  background-color: #9bc65f;
+  box-shadow: 0 0 15px #a8d477;
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+.modal {
+  position: fixed;
+  top: 15%;
+  right: 5%;
+  width: 280px;
+  background: rgba(30, 45, 30, 0.95);
+  color: #c7dbad;
+  border-radius: 15px;
+  box-shadow: 0 0 20px #a1c771;
+  padding: 20px;
+  z-index: 999;
+  font-family: 'Roboto Slab', serif;
   display: none;
+  flex-direction: column;
+  gap: 10px;
 }
 
-footer {
+.modal h3 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.6rem;
+  color: #bedca6;
+  margin-bottom: 12px;
   text-align: center;
-  margin-top: 3rem;
-  font-style: italic;
-  color: #a66c92;
+}
+
+.close-modal {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  color: #9bbd59;
+  transition: color 0.3s ease;
+}
+
+.close-modal:hover {
+  color: #d9f0a6;
+}
+
+.heart-signature {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.8rem;
+  color: #a7b06c;
+  margin-top: 40px;
+  text-align: right;
+  opacity: 0.9;
+  text-shadow: 0 0 3px #9bbd59;
+}
+
+/* Destellos estrellitas cuando se marca checkbox */
+@keyframes sparkle {
+  0% { box-shadow: 0 0 5px #9bbd59; }
+  50% { box-shadow: 0 0 15px #c0e18d; }
+  100% { box-shadow: 0 0 5px #9bbd59; }
+}
+
+.checkbox:checked {
+  animation: sparkle 1.5s ease-in-out;
+}
+
+/* Responsive para modos celular, ipad, laptop */
+
+@media (max-width: 480px) {
+  body {
+    padding: 15px 8px;
+  }
+
+  .semester {
+    padding: 15px 12px;
+  }
+
+  .course {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .grade-input {
+    width: 100%;
+    max-width: 150px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 1024px) {
+  body {
+    padding: 25px 20px;
+  }
 }
