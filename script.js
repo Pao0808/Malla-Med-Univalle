@@ -1,129 +1,144 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const coursesData = {
-    "Primer Semestre": [
-      { name: "Anatomía I", emoji: "🦴", prereq: [] },
-      { name: "Genética", emoji: "🧬", prereq: [] },
-      { name: "Histología I", emoji: "🔬", prereq: [] },
-      { name: "Informática Aplicada", emoji: "💻", prereq: [] }
+  // Datos de cursos con prerrequisitos y emojis
+  const cursos = {
+    'primer': [
+      { id: 'anatomia1', name: 'Anatomía I', prereq: [], emoji: '🦴' },
+      { id: 'genetica', name: 'Genética', prereq: [], emoji: '🧬' },
+      { id: 'histologia1', name: 'Histología I', prereq: [], emoji: '🔬' },
+      { id: 'informatica', name: 'Informática Aplicada', prereq: [], emoji: '💻' },
     ],
-    "Segundo Semestre": [
-      { name: "Anatomía II", emoji: "🦴", prereq: ["Anatomía I"] },
-      { name: "Embriología", emoji: "🧫", prereq: ["Genética"] },
-      { name: "Histología II", emoji: "🔬", prereq: ["Histología I"] },
-      { name: "Bioquímica I", emoji: "⚗️", prereq: [] },
-      { name: "Salud Pública I", emoji: "🏥", prereq: [] },
-      { name: "Inglés técnico I", emoji: "🌐", prereq: [] }
+    'segundo': [
+      { id: 'anatomia2', name: 'Anatomía II', prereq: ['anatomia1'], emoji: '🦴' },
+      { id: 'embriologia', name: 'Embriología', prereq: ['genetica'], emoji: '👶' },
+      { id: 'histologia2', name: 'Histología II', prereq: ['histologia1'], emoji: '🔬' },
+      { id: 'bioquimica1', name: 'Bioquímica I', prereq: [], emoji: '⚗️' },
+      { id: 'saludpublica1', name: 'Salud pública I', prereq: [], emoji: '🏥' },
+      { id: 'ingles1', name: 'Inglés técnico I', prereq: [], emoji: '🇬🇧' },
     ],
-    "Tercer Semestre": [
-      { name: "Bioquímica II", emoji: "⚗️", prereq: ["Bioquímica I"] },
-      { name: "Fisiología I", emoji: "🧪", prereq: ["Anatomía II"] },
-      { name: "Microbiología I", emoji: "🦠", prereq: [] },
-      { name: "Patología I", emoji: "🩺", prereq: ["Anatomía II", "Histología II"] },
-      { name: "Biofísica", emoji: "📊", prereq: ["Anatomía II"] },
-      { name: "Inglés técnico II", emoji: "🌐", prereq: ["Inglés técnico I"] }
+    'tercer': [
+      { id: 'bioquimica2', name: 'Bioquímica II', prereq: ['bioquimica1'], emoji: '⚗️' },
+      { id: 'fisiologia1', name: 'Fisiología I', prereq: ['anatomia2'], emoji: '❤️' },
+      { id: 'microbiologia1', name: 'Microbiología I', prereq: [], emoji: '🦠' },
+      { id: 'patologia1', name: 'Patología I', prereq: ['anatomia2', 'histologia2'], emoji: '🩸' },
+      { id: 'biofisica', name: 'Biofísica', prereq: ['anatomia2'], emoji: '⚡' },
+      { id: 'ingles2', name: 'Inglés técnico II', prereq: ['ingles1'], emoji: '🇬🇧' },
     ],
-    "Cuarto Semestre": [
-      { name: "Bioquímica III", emoji: "⚗️", prereq: ["Bioquímica II"] },
-      { name: "Fisiología II", emoji: "🧪", prereq: ["Fisiología I"] },
-      { name: "Microbiología II", emoji: "🦠", prereq: ["Microbiología I"] },
-      { name: "Parasitología", emoji: "🪱", prereq: ["Microbiología I"] },
-      { name: "Patología II", emoji: "🩺", prereq: ["Patología I"] },
-      { name: "Psicología Médica", emoji: "🧠", prereq: [] },
-      { name: "Sociología y Ética Médica", emoji: "⚖️", prereq: [] },
-      { name: "Electiva (Nutrición)", emoji: "🥗", prereq: [] }
+    'cuarto': [
+      { id: 'bioquimica3', name: 'Bioquímica III', prereq: ['bioquimica2'], emoji: '⚗️' },
+      { id: 'fisiologia2', name: 'Fisiología II', prereq: ['fisiologia1'], emoji: '❤️' },
+      { id: 'microbiologia2', name: 'Microbiología II', prereq: ['microbiologia1'], emoji: '🦠' },
+      { id: 'parasitologia', name: 'Parasitología', prereq: ['microbiologia1'], emoji: '🐛' },
+      { id: 'patologia2', name: 'Patología II', prereq: ['patologia1'], emoji: '🩸' },
+      { id: 'psicologia', name: 'Psicología Médica', prereq: [], emoji: '🧠' },
+      { id: 'sociologia', name: 'Sociología y Ética Médica', prereq: [], emoji: '⚖️' },
+      { id: 'electiva', name: 'Electiva (Nutrición)', prereq: [], emoji: '🥗' },
     ],
-    "Quinto Semestre": [
-      { name: "Semiología General y Especial I", emoji: "🩻", prereq: ["Fisiología II", "Bioquímica III"] },
-      { name: "Técnica Quirúrgica I", emoji: "🔪", prereq: ["Fisiología II"] },
-      { name: "Farmacología y Terapéutica I", emoji: "💊", prereq: ["Fisiología II", "Bioquímica III"] },
-      { name: "Fisiopatología I", emoji: "🩸", prereq: ["Fisiología II", "Patología II"] },
-      { name: "Patología III", emoji: "🩺", prereq: ["Patología II"] },
-      { name: "Inmunología", emoji: "🦠", prereq: ["Microbiología II", "Patología II"] }
+    'quinto': [
+      { id: 'semiologia1', name: 'Semiología General y Especial I', prereq: ['fisiologia2', 'bioquimica3'], emoji: '🩺' },
+      { id: 'tecnicaquirurgica1', name: 'Técnica Quirúrgica I', prereq: ['fisiologia2'], emoji: '🔪' },
+      { id: 'farmacologia1', name: 'Farmacología y Terapéutica I', prereq: ['fisiologia2', 'bioquimica3'], emoji: '💊' },
+      { id: 'fisiopatologia1', name: 'Fisiopatología I', prereq: ['fisiologia2', 'patologia2'], emoji: '🩻' },
+      { id: 'patologia3', name: 'Patología III', prereq: ['patologia2'], emoji: '🩸' },
+      { id: 'inmunologia', name: 'Inmunología', prereq: ['microbiologia2', 'patologia2'], emoji: '🛡️' },
     ],
-    "Sexto Semestre": [
-      { name: "Semiología General y Especial II", emoji: "🩻", prereq: ["Semiología General y Especial I"] },
-      { name: "Técnica Quirúrgica II", emoji: "🔪", prereq: ["Técnica Quirúrgica I"] },
-      { name: "Farmacología y Terapéutica II", emoji: "💊", prereq: ["Farmacología y Terapéutica I"] },
-      { name: "Fisiopatología II", emoji: "🩸", prereq: ["Fisiopatología I"] },
-      { name: "Anestesiología", emoji: "💉", prereq: ["Fisiología II"] },
-      { name: "Salud Pública II", emoji: "🏥", prereq: ["Salud Pública I"] },
-      { name: "Imagenología", emoji: "🩻", prereq: ["Anatomía II"] }
+    'sexto': [
+      { id: 'semiologia2', name: 'Semiología General y Especial II', prereq: ['semiologia1'], emoji: '🩺' },
+      { id: 'tecnicaquirurgica2', name: 'Técnica Quirúrgica II', prereq: ['tecnicaquirurgica1'], emoji: '🔪' },
+      { id: 'farmacologia2', name: 'Farmacología y Terapéutica II', prereq: ['farmacologia1'], emoji: '💊' },
+      { id: 'fisiopatologia2', name: 'Fisiopatología II', prereq: ['fisiopatologia1'], emoji: '🩻' },
+      { id: 'anestesiologia', name: 'Anestesiología', prereq: ['fisiologia2'], emoji: '💉' },
+      { id: 'saludpublica2', name: 'Salud Pública II', prereq: ['saludpublica1'], emoji: '🏥' },
+      { id: 'imagenologia', name: 'Imagenología', prereq: ['anatomia2'], emoji: '🩻' },
     ],
   };
 
-  const main = document.querySelector('main');
-  const modal = document.getElementById('modal');
-  const modalText = document.getElementById('modal-text');
-  const closeModalBtn = modal.querySelector('.close-modal');
+  // Función para crear el DOM de los cursos
+  function crearCursos() {
+    Object.entries(cursos).forEach(([semestreId, listaCursos]) => {
+      const listaContainer = document.getElementById(semestreId + '-list');
+      listaContainer.innerHTML = ''; // Limpiar
 
-  function crearSemestres() {
-    for (const [semesterName, courses] of Object.entries(coursesData)) {
-      const section = document.createElement('section');
-      section.classList.add('semester');
-      section.dataset.semester = semesterName;
+      listaCursos.forEach(curso => {
+        const divCurso = document.createElement('div');
+        divCurso.classList.add('course');
 
-      const h2 = document.createElement('h2');
-      h2.textContent = `${semesterName} 🗓️`;
-      section.appendChild(h2);
-
-      const coursesList = document.createElement('div');
-      coursesList.classList.add('courses-list');
-
-      courses.forEach(course => {
-        const courseDiv = document.createElement('div');
-        courseDiv.classList.add('course');
-
-        // Checkbox
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
-        checkbox.id = `${semesterName}-${course.name}`;
-        checkbox.dataset.coursename = course.name;
+        checkbox.id = curso.id;
 
-        // Label
+        // Cargar estado guardado
+        checkbox.checked = localStorage.getItem(curso.id + '-aprobado') === 'true';
+
         const label = document.createElement('label');
         label.classList.add('course-name');
-        label.htmlFor = checkbox.id;
-        label.textContent = `${course.emoji} ${course.name}`;
+        label.setAttribute('for', curso.id);
+        label.textContent = curso.name;
 
-        // Ojo para mostrar prerrequisitos
-        if (course.prereq.length > 0) {
-          const eyeSpan = document.createElement('span');
-          eyeSpan.classList.add('eye-icon');
-          eyeSpan.title = "Ver prerrequisitos 👁️";
-          eyeSpan.textContent = '👁️';
-          eyeSpan.style.marginLeft = '8px';
-          eyeSpan.style.cursor = 'pointer';
+        // Emoji del curso
+        const emojiSpan = document.createElement('span');
+        emojiSpan.classList.add('course-emoji');
+        emojiSpan.textContent = curso.emoji;
 
-          eyeSpan.addEventListener('click', (e) => {
-            e.stopPropagation();
-            modalText.innerHTML = course.prereq.map(p => `• ${p}`).join('<br>');
-            modal.style.display = 'flex';
+        // Icono ojo para prerrequisitos
+        const eyeIcon = document.createElement('span');
+        eyeIcon.classList.add('eye-icon');
+        eyeIcon.innerHTML = '👁️';
+
+        // Tooltip de prerrequisitos
+        const tooltip = document.createElement('div');
+        tooltip.classList.add('tooltip');
+        if (curso.prereq.length === 0) {
+          tooltip.textContent = 'Sin prerrequisitos';
+        } else {
+          // Mostrar nombres de cursos prereq
+          const nombres = curso.prereq.map(id => {
+            // Buscar nombre por id en todos los cursos
+            for (const sem in cursos) {
+              const encontrado = cursos[sem].find(c => c.id === id);
+              if (encontrado) return encontrado.name;
+            }
+            return id;
           });
-
-          label.appendChild(eyeSpan);
+          tooltip.textContent = 'Prerrequisitos: ' + nombres.join(', ');
         }
 
-        courseDiv.appendChild(checkbox);
-        courseDiv.appendChild(label);
-        coursesList.appendChild(courseDiv);
-      });
+        eyeIcon.addEventListener('mouseenter', () => {
+          tooltip.classList.add('show');
+        });
+        eyeIcon.addEventListener('mouseleave', () => {
+          tooltip.classList.remove('show');
+        });
 
-      section.appendChild(coursesList);
-      main.appendChild(section);
-    }
+        // Guardar estado checkbox en localStorage y validar prerrequisitos
+        checkbox.addEventListener('change', () => {
+          if (checkbox.checked) {
+            // Validar si cumple prereq
+            const cumple = curso.prereq.every(prId => localStorage.getItem(prId + '-aprobado') === 'true');
+            if (!cumple) {
+              alert('No cumple los prerrequisitos para ' + curso.name);
+              checkbox.checked = false;
+              return;
+            }
+          }
+          // Guardar estado y actualizar estilo
+          localStorage.setItem(curso.id + '-aprobado', checkbox.checked);
+          actualizarEstilosCursos();
+        });
+
+        divCurso.appendChild(checkbox);
+        divCurso.appendChild(label);
+        divCurso.appendChild(emojiSpan);
+        divCurso.appendChild(eyeIcon);
+        divCurso.appendChild(tooltip);
+
+        listaContainer.appendChild(divCurso);
+      });
+    });
   }
 
-  // Cerrar modal
-  closeModalBtn.addEventListener('click', () => {
-    modal.style.display = 'none';
-  });
-
-  // Cerrar modal si se hace clic afuera del contenido
-  window.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.style.display = 'none';
-    }
-  });
-
-  crearSemestres();
-});
+  // Actualizar estilos de cursos según si están aprobados
+  function actualizarEstilosCursos() {
+    Object.entries(cursos).forEach(([_, listaCursos]) => {
+      listaCursos.forEach(curso => {
+        const checkbox = document.getElementById(curso.id);
+        const label = checkbox ? checkbox.nextElementSibling : null;
