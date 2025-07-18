@@ -1,5 +1,3 @@
-/* style.css - Estilo Vintage Rosa/Lila Pastel */
-
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Georgia&display=swap');
 
 body {
@@ -12,12 +10,23 @@ body {
   transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-h1, h2 {
+h1 {
   font-family: 'Dancing Script', cursive;
   color: #a65ca6;
   text-shadow: 1px 1px 0 #f8e0f8;
-  margin-bottom: 15px;
+  margin-bottom: 0;
   text-align: center;
+  font-size: 2.8rem;
+}
+
+.dedicatoria {
+  font-family: 'Dancing Script', cursive;
+  color: #b361b3;
+  font-size: 1.3rem;
+  text-align: center;
+  margin-top: 4px;
+  margin-bottom: 25px;
+  user-select: none;
 }
 
 section {
@@ -29,9 +38,18 @@ section {
   margin-bottom: 25px;
 }
 
+h2 {
+  font-family: 'Dancing Script', cursive;
+  color: #9f539f;
+  margin-bottom: 15px;
+  font-size: 1.7rem;
+  text-align: center;
+}
+
 ul {
   list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
 li {
@@ -47,6 +65,7 @@ li {
   font-weight: 600;
   color: #5c3e5c;
   transition: background-color 0.3s ease;
+  user-select: none;
 }
 
 li.aprobado {
@@ -74,9 +93,10 @@ button {
   cursor: pointer;
   font-weight: 700;
   margin-left: 10px;
+  user-select: none;
 }
 
-button:hover {
+button:hover:not(:disabled) {
   background: #a66bb0;
   color: #fff;
 }
@@ -99,6 +119,7 @@ input[type="number"] {
   width: 70px;
   text-align: center;
   margin-left: 10px;
+  user-select: text;
 }
 
 input[type="number"]:focus {
@@ -106,7 +127,6 @@ input[type="number"]:focus {
   box-shadow: 0 0 8px #b072b0;
 }
 
-/* Contenedores de control */
 .controls {
   text-align: center;
   margin-bottom: 25px;
@@ -120,6 +140,7 @@ input[type="number"]:focus {
   padding: 10px 20px;
   font-weight: 900;
   margin: 0 10px;
+  user-select: none;
 }
 
 .controls button:hover {
@@ -128,7 +149,6 @@ input[type="number"]:focus {
   box-shadow: 0 0 18px #b16bed;
 }
 
-/* Mensaje sorpresa dulce */
 #sorpresa {
   display: none;
   margin-top: 20px;
@@ -139,6 +159,7 @@ input[type="number"]:focus {
   font-weight: 900;
   text-align: center;
   box-shadow: 0 0 20px #c981dbaa;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-family: 'Dancing Script', cursive;
+  user-select: none;
 }
