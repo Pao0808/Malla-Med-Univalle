@@ -1,20 +1,47 @@
-<!DOCTYPE html><html lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Plan de Estudios para Paola 💖</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Plan de Estudios para Paola 🎀</h1>
-  <p class="descripcion">Una guía dulce, brillante y vintage para mi artista favorita, llena de amor, para que puedas seguir tu camino médico sabiendo todo lo que ya lograste y lo que viene por conquistar 💐✨</p>  <main id="contenido"></main>  <div class="botones">
-    <button onclick="guardarProgreso()">💾 Guardar</button>
-    <button onclick="cargarProgreso()">📂 Cargar</button>
-    <button onclick="resetearTodo()">🗑️ Reiniciar</button>
-    <button onclick="mostrarSorpresa()">🎁 Ver Sorpresa</button>
-  </div>  <div id="sorpresa">
-    <p>🎨✨ Amor mío, cada materia que completes es una pincelada más en el hermoso cuadro de tu vida. Estoy orgulloso de ti y siempre voy a estar para ti. ¡Te amo! 💖</p>
-  </div>  <footer>
-    Hecho con todo el amor del mundo por tu Sebas 💌
-  </footer>  <script src="script.js"></script></body>
+  <header>
+    <h1>💌 Plan de Estudios para Paola 💌</h1>
+    <p class="subtitulo">Mi amor, este camino es tuyo, pero siempre estaré a tu lado para recorrerlo contigo. 🌸</p>
+  </header>
+
+  <main>
+    <section class="dedicatoria">
+      <p>
+        🌷 Cada curso es un paso más cerca de tu sueño, y yo quiero acompañarte en cada uno.  
+        Esta guía es solo una forma de recordarte lo increíble que eres, lo mucho que te admiro,  
+        y que siempre estaré para apoyarte. Te amo infinitamente. 💕
+      </p>
+    </section>
+
+    <section class="botones">
+      <button onclick="filtrarMaterias()">✨ Ver materias habilitadas</button>
+      <button onclick="exportarPDF()">📄 Exportar a PDF</button>
+      <button onclick="mostrarMensaje()">💌 Mensaje secreto</button>
+      <button onclick="guardarEstado()">💾 Guardar mi progreso</button>
+      <button onclick="restaurarEstado()">🔄 Restaurar guardado</button>
+      <button onclick="marcarTodoAprobado()">✅ Marcar todo como aprobado</button>
+      <button onclick="reiniciarTodo()">🧹 Reiniciar todo</button>
+      <button onclick="mostrarNotasAltas()">🌟 Ver cursos con nota ≥ 90</button>
+      <button onclick="mostrarEstadisticas()">📊 Ver estadísticas</button>
+    </section>
+
+    <section id="semestres">
+      <!-- Aquí JavaScript insertará las materias organizadas por semestre -->
+    </section>
+  </main>
+
+  <footer>
+    <p>🎨 Con amor eterno de tu Sebastián, quien te admira más cada día 💖</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
 </html>
