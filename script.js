@@ -1,7 +1,4 @@
-// script.js
-
 document.addEventListener('DOMContentLoaded', () => {
-  // Definición de todos los cursos con prerrequisitos
   const coursesData = {
     "Primer Semestre": [
       { name: "Anatomía I", emoji: "🦴", prereq: [] },
@@ -54,113 +51,79 @@ document.addEventListener('DOMContentLoaded', () => {
     ],
   };
 
-  // Seleccionamos el contenedor principal
   const main = document.querySelector('main');
+  const modal = document.getElementById('modal');
+  const modalText = document.getElementById('modal-text');
+  const closeModalBtn = modal.querySelector('.close-modal');
 
-  // Función para crear la interfaz de cursos por semestre
   function crearSemestres() {
     for (const [semesterName, courses] of Object.entries(coursesData)) {
-      // Crear sección semestre
       const section = document.createElement('section');
       section.classList.add('semester');
       section.dataset.semester = semesterName;
 
-      // Título semestre con emoji calendario
       const h2 = document.createElement('h2');
       h2.textContent = `${semesterName} 🗓️`;
-
-      // Botones pequeños al lado derecho del título
-      const btnContainer = document.createElement('span');
-      btnContainer.classList.add('btn-semester-container');
-
-      // Botón promedio con emoji 📊
-      const btnPromedio = document.createElement('button');
-      btnPromedio.title = `Ver promedio de ${semesterName}`;
-      btnPromedio.classList.add('btn-promedio');
-      btnPromedio.textContent = '📊';
-      btnContainer.appendChild(btnPromedio);
-
-      h2.appendChild(btnContainer);
       section.appendChild(h2);
 
-      // Lista cursos
       const coursesList = document.createElement('div');
       coursesList.classList.add('courses-list');
 
-      courses.forEach((course) => {
-        // Crear div curso
+      courses.forEach(course => {
         const courseDiv = document.createElement('div');
         courseDiv.classList.add('course');
-        courseDiv.dataset.coursename = course.name;
-
-        // Label con emoji + nombre curso
-        const label = document.createElement('label');
-        label.classList.add('course-name');
-        label.innerHTML = `${course.emoji} <span>${course.name}</span>`;
 
         // Checkbox
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
-        checkbox.classList.add('checkbox');
-        checkbox.title = `Marcar como aprobado: ${course.name}`;
+        checkbox.id = `${semesterName}-${course.name}`;
+        checkbox.dataset.coursename = course.name;
 
-        // Nota input
-        const gradeInput = document.createElement('input');
-        gradeInput.type = 'number';
-        gradeInput.min = 0;
-        gradeInput.max = 20;
-        gradeInput.step = 0.01;
-        gradeInput.placeholder = 'Nota';
-        gradeInput.classList.add('grade-input');
+        // Label
+        const label = document.createElement('label');
+        label.classList.add('course-name');
+        label.htmlFor = checkbox.id;
+        label.textContent = `${course.emoji} ${course.name}`;
 
-        // Emoji ojo para prerrequisitos
-        const eyeIcon = document.createElement('span');
-        eyeIcon.classList.add('eye-icon');
-        eyeIcon.title = 'Ver prerrequisitos';
-        eyeIcon.textContent = '👁️';
+        // Ojo para mostrar prerrequisitos
+        if (course.prereq.length > 0) {
+          const eyeSpan = document.createElement('span');
+          eyeSpan.classList.add('eye-icon');
+          eyeSpan.title = "Ver prerrequisitos 👁️";
+          eyeSpan.textContent = '👁️';
+          eyeSpan.style.marginLeft = '8px';
+          eyeSpan.style.cursor = 'pointer';
 
-        // Agregamos elementos al curso
-        courseDiv.appendChild(label);
+          eyeSpan.addEventListener('click', (e) => {
+            e.stopPropagation();
+            modalText.innerHTML = course.prereq.map(p => `• ${p}`).join('<br>');
+            modal.style.display = 'flex';
+          });
+
+          label.appendChild(eyeSpan);
+        }
+
         courseDiv.appendChild(checkbox);
-        courseDiv.appendChild(gradeInput);
-        courseDiv.appendChild(eyeIcon);
-
+        courseDiv.appendChild(label);
         coursesList.appendChild(courseDiv);
       });
 
       section.appendChild(coursesList);
-      main.insertBefore(section, main.querySelector('footer'));
+      main.appendChild(section);
     }
   }
 
-  crearSemestres();
-
-  // Modal para prerrequisitos
-  const modal = document.getElementById('modal');
-  const modalTitle = modal.querySelector('h3');
-  const modalBody = modal.querySelector('p');
-  const closeModalBtn = modal.querySelector('.close-modal');
-
-  // Mostrar modal con prerrequisitos
-  function mostrarModal(title, content) {
-    modalTitle.textContent = title;
-    modalBody.textContent = content;
-    modal.style.display = 'flex';
-  }
-
+  // Cerrar modal
   closeModalBtn.addEventListener('click', () => {
     modal.style.display = 'none';
   });
 
-  // Cerrar modal si clic fuera del contenido
+  // Cerrar modal si se hace clic afuera del contenido
   window.addEventListener('click', (e) => {
     if (e.target === modal) {
       modal.style.display = 'none';
     }
   });
 
-  // Función para verificar si se cumplen prerrequisitos
-  function cumplePrerrequisitos(courseName) {
-    let prereqs = null;
-    // Encontrar prerrequisitos en coursesData
-    for (const semCourses of Object.values(courses
+  crearSemestres();
+});
