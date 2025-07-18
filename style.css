@@ -1,253 +1,293 @@
-/* Paleta Slytherin vintage: verdes profundos, grises, plateados y toques mágicos */
-
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Great+Vibes&family=Roboto+Slab&display=swap');
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
 body {
-  background: linear-gradient(135deg, #1a332f, #2a4d3a);
-  color: #d4d9d6;
-  font-family: 'Roboto Slab', serif;
-  margin: 0;
+  background: #f8f0f8; /* lila pastel muy claro */
+  color: #4b4b4b;
   padding: 20px;
+  min-height: 100vh;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-h1 {
-  font-family: 'Cinzel Decorative', serif;
-  font-size: 3rem;
-  color: #a1b48f;
+/* Modo noche */
+body.night {
+  background: #2a2a3d;
+  color: #d8cde9;
+}
+
+/* Encabezado */
+header {
   text-align: center;
-  text-shadow: 0 0 5px #9dbb8e, 0 0 10px #799a66;
-  margin-bottom: 40px;
-}
-
-.semester {
-  background: rgba(10, 30, 20, 0.75);
-  border: 2px solid #597c54;
-  border-radius: 15px;
-  padding: 20px;
   margin-bottom: 30px;
-  box-shadow: 0 0 15px #4a6a3f;
+  color: #5a3e85; /* morado vintage */
+  text-shadow: 1px 1px 2px #d1b3e6;
   position: relative;
 }
 
-.semester h2 {
-  font-family: 'Cinzel Decorative', serif;
-  font-size: 2rem;
-  margin-bottom: 15px;
-  color: #b3c497;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.semester h2 span {
-  cursor: pointer;
-  font-size: 1.8rem;
-  padding: 5px 8px;
-  border-radius: 50%;
-  color: #c0d6a9;
-  transition: all 0.3s ease;
-}
-
-.semester h2 span:hover {
-  background-color: #8aa94e;
-  color: #f0f5db;
-  box-shadow: 0 0 8px #8aa94e;
-}
-
-.course-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.course {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: rgba(42, 70, 47, 0.5);
-  border: 1.5px solid #738f5c;
-  border-radius: 10px;
-  padding: 12px 20px;
+header h1 {
+  font-family: 'Lucida Handwriting', cursive;
+  font-size: 2.4rem;
   margin-bottom: 10px;
-  color: #d9d9d9;
-  font-size: 1.1rem;
-  position: relative;
-  transition: background-color 0.3s ease;
+  letter-spacing: 1.2px;
 }
 
-.course:hover {
-  background-color: rgba(107, 153, 75, 0.8);
-  cursor: pointer;
-}
-
-.course-name {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.course-name .eye-icon {
-  cursor: pointer;
-  font-size: 1.3rem;
-  color: #a4b98a;
-  transition: color 0.3s ease;
-}
-
-.course-name .eye-icon:hover {
-  color: #dbe8bc;
-}
-
-.checkbox {
-  margin-right: 15px;
-  width: 22px;
-  height: 22px;
-  cursor: pointer;
-  accent-color: #9bbd59;
-  transition: box-shadow 0.4s ease;
-}
-
-.checkbox:checked {
-  box-shadow: 0 0 8px #b5db7e;
-}
-
-.grade-input {
-  width: 60px;
-  padding: 5px 8px;
-  border-radius: 6px;
+#toggle-theme {
+  background: #cbb3e0;
   border: none;
-  text-align: center;
-  font-weight: bold;
-  font-family: 'Roboto Slab', serif;
-  color: #264d00;
-  background-color: #d0e7a8;
-  box-shadow: inset 0 0 5px #a4be6e;
-  transition: background-color 0.3s ease;
-}
-
-.grade-input:focus {
-  outline: none;
-  background-color: #e2f2b2;
-  box-shadow: 0 0 10px #b5db7e;
-}
-
-.buttons-container {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-}
-
-.btn {
-  background-color: #7b9f43;
-  border: none;
-  padding: 10px 18px;
-  color: #f0f5db;
-  font-weight: 600;
-  font-family: 'Cinzel Decorative', serif;
+  border-radius: 20px;
+  padding: 8px 18px;
   font-size: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 0 8px #7b9f43;
+  color: #4b3a73;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  box-shadow: 0 0 6px #d9c9f7;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  user-select: none;
+}
+
+#toggle-theme:hover {
+  background: #a786d1;
+  color: #f2e6ff;
+  box-shadow: 0 0 10px #b39ddb;
+}
+
+/* Semestres */
+.semester {
+  background: #f9eafc;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  padding: 20px 25px;
+  box-shadow: 0 3px 8px rgba(122, 73, 152, 0.25);
+  transition: background-color 0.4s ease;
+}
+
+body.night .semester {
+  background: #3c3b56;
+  box-shadow: 0 3px 8px rgba(112, 85, 170, 0.6);
+}
+
+/* Títulos semestres */
+.semester h2 {
+  font-family: 'Lucida Handwriting', cursive;
+  font-size: 1.8rem;
+  color: #6a4e8f;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-shadow: 1px 1px 2px #d3b1ea;
+}
+
+/* Botones al lado del título del semestre */
+.btns-semester {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-emoji {
+  cursor: pointer;
+  font-size: 1.5rem;
+  user-select: none;
+  transition: transform 0.2s ease;
+  color: #7a53b7;
+  filter: drop-shadow(0 0 2px #b4a5d3);
+}
+
+.btn-emoji:hover {
+  transform: scale(1.25);
+  color: #a287cc;
+  filter: drop-shadow(0 0 4px #d3c2f2);
+}
+
+/* Lista de cursos */
+.courses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Cada curso */
+.course {
+  background: #f0d7f7;
+  border-radius: 12px;
+  padding: 10px 15px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  box-shadow: 0 2px 5px rgba(156, 120, 187, 0.4);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
 }
 
-.btn:hover {
-  background-color: #9bc65f;
-  box-shadow: 0 0 15px #a8d477;
+body.night .course {
+  background: #5c5470;
+  box-shadow: 0 2px 5px rgba(113, 98, 145, 0.7);
 }
 
-.btn:active {
-  transform: scale(0.95);
-}
-
-.modal {
-  position: fixed;
-  top: 15%;
-  right: 5%;
-  width: 280px;
-  background: rgba(30, 45, 30, 0.95);
-  color: #c7dbad;
-  border-radius: 15px;
-  box-shadow: 0 0 20px #a1c771;
-  padding: 20px;
-  z-index: 999;
-  font-family: 'Roboto Slab', serif;
-  display: none;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.modal h3 {
-  font-family: 'Cinzel Decorative', serif;
-  font-size: 1.6rem;
-  color: #bedca6;
-  margin-bottom: 12px;
-  text-align: center;
-}
-
-.close-modal {
-  position: absolute;
-  top: 8px;
-  right: 12px;
+/* Checkbox */
+.course input[type="checkbox"] {
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
-  font-size: 1.4rem;
-  color: #9bbd59;
+  accent-color: #9e81c9;
+  transition: accent-color 0.3s ease;
+}
+
+.course input[type="checkbox"]:checked {
+  accent-color: #4b3674;
+}
+
+/* Nombre del curso */
+.course-name {
+  flex-grow: 1;
+  font-size: 1.15rem;
+  color: #5e3a8a;
+  user-select: none;
+  font-weight: 600;
+}
+
+/* Ícono ojo para prerrequisitos */
+.eye-icon {
+  margin-left: 12px;
+  cursor: pointer;
+  font-size: 1.25rem;
+  user-select: none;
+  color: #7d5da8;
+  filter: drop-shadow(0 0 2px #d1b0e5);
   transition: color 0.3s ease;
+  position: relative;
 }
 
-.close-modal:hover {
-  color: #d9f0a6;
+.eye-icon:hover {
+  color: #a77dc9;
+  filter: drop-shadow(0 0 5px #e1c4ff);
 }
 
-.heart-signature {
-  font-family: 'Great Vibes', cursive;
-  font-size: 1.8rem;
-  color: #a7b06c;
-  margin-top: 40px;
-  text-align: right;
-  opacity: 0.9;
-  text-shadow: 0 0 3px #9bbd59;
+/* Emoji curso */
+.course-emoji {
+  margin-left: 10px;
+  font-size: 1.35rem;
+  user-select: none;
+  filter: drop-shadow(0 0 2px #c3a6db);
 }
 
-/* Destellos estrellitas cuando se marca checkbox */
-@keyframes sparkle {
-  0% { box-shadow: 0 0 5px #9bbd59; }
-  50% { box-shadow: 0 0 15px #c0e18d; }
-  100% { box-shadow: 0 0 5px #9bbd59; }
+/* Tooltip para prerrequisitos */
+.tooltip {
+  position: absolute;
+  background: #bda0f7cc;
+  padding: 6px 12px;
+  border-radius: 10px;
+  color: #3d2954;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  top: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 8px #a18ee0cc;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
 }
 
-.checkbox:checked {
-  animation: sparkle 1.5s ease-in-out;
+.tooltip.show {
+  opacity: 1;
+  pointer-events: auto;
 }
 
-/* Responsive para modos celular, ipad, laptop */
+/* Modal para notas */
+#notes-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background: #efd9fc;
+  padding: 25px 35px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px #a585d0cc;
+  transform: translate(-50%, -50%);
+  display: none;
+  z-index: 1100;
+  max-width: 320px;
+  width: 90%;
+}
 
-@media (max-width: 480px) {
+#notes-modal h3 {
+  font-family: 'Lucida Handwriting', cursive;
+  margin-bottom: 15px;
+  color: #5a3e85;
+}
+
+#notes-modal label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #684a9a;
+}
+
+#notes-modal input[type="number"] {
+  width: 100%;
+  padding: 6px 10px;
+  border: 2px solid #ad93d4;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #3b2861;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+#notes-modal input[type="number"]:focus {
+  border-color: #7e5bb8;
+}
+
+#notes-modal button {
+  margin-top: 18px;
+  padding: 8px 18px;
+  border: none;
+  background: #9e7ddb;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 18px;
+  cursor: pointer;
+  box-shadow: 0 0 8px #ac9de0;
+  transition: background-color 0.3s ease;
+}
+
+#notes-modal button:hover {
+  background: #7a57c1;
+}
+
+/* Fondo modal overlay */
+#modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #4b3a6a99;
+  z-index: 1050;
+  display: none;
+}
+
+/* Responsivo */
+@media (max-width: 700px) {
   body {
-    padding: 15px 8px;
+    padding: 12px;
   }
-
   .semester {
-    padding: 15px 12px;
+    padding: 15px 20px;
   }
-
-  .course {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+  header h1 {
+    font-size: 1.8rem;
   }
-
-  .grade-input {
-    width: 100%;
-    max-width: 150px;
+  .btn-emoji {
+    font-size: 1.3rem;
   }
-}
-
-@media (min-width: 481px) and (max-width: 1024px) {
-  body {
-    padding: 25px 20px;
+  .course-name {
+    font-size: 1rem;
   }
 }
