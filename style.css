@@ -1,293 +1,159 @@
-/* Reset básico */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+/* style.css */
 
 body {
-  background: #f8f0f8; /* lila pastel muy claro */
-  color: #4b4b4b;
-  padding: 20px;
-  min-height: 100vh;
-  transition: background-color 0.4s ease, color 0.4s ease;
+  margin: 0;
+  font-family: 'Georgia', serif;
+  background-color: #0b0c0d;
+  color: #e0e0e0;
+  background-image: url('https://www.transparenttextures.com/patterns/dark-denim-3.png');
+  background-size: cover;
 }
 
-/* Modo noche */
-body.night {
-  background: #2a2a3d;
-  color: #d8cde9;
-}
-
-/* Encabezado */
 header {
+  background-color: #1a2e1a;
+  padding: 1rem;
   text-align: center;
-  margin-bottom: 30px;
-  color: #5a3e85; /* morado vintage */
-  text-shadow: 1px 1px 2px #d1b3e6;
-  position: relative;
+  color: #c0ffb3;
+  box-shadow: 0 0 10px #5aff5a;
 }
 
-header h1 {
-  font-family: 'Lucida Handwriting', cursive;
-  font-size: 2.4rem;
-  margin-bottom: 10px;
-  letter-spacing: 1.2px;
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  font-style: italic;
 }
 
-#toggle-theme {
-  background: #cbb3e0;
-  border: none;
-  border-radius: 20px;
-  padding: 8px 18px;
-  font-size: 1rem;
-  color: #4b3a73;
+.accordion {
+  margin: 1rem;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #1a1f1a;
+  border: 1px solid #2e4e2e;
+}
+
+.semester-title {
+  background-color: #2d3b2d;
+  padding: 1rem;
   cursor: pointer;
-  box-shadow: 0 0 6px #d9c9f7;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  user-select: none;
-}
-
-#toggle-theme:hover {
-  background: #a786d1;
-  color: #f2e6ff;
-  box-shadow: 0 0 10px #b39ddb;
-}
-
-/* Semestres */
-.semester {
-  background: #f9eafc;
-  border-radius: 15px;
-  margin-bottom: 25px;
-  padding: 20px 25px;
-  box-shadow: 0 3px 8px rgba(122, 73, 152, 0.25);
-  transition: background-color 0.4s ease;
-}
-
-body.night .semester {
-  background: #3c3b56;
-  box-shadow: 0 3px 8px rgba(112, 85, 170, 0.6);
-}
-
-/* Títulos semestres */
-.semester h2 {
-  font-family: 'Lucida Handwriting', cursive;
-  font-size: 1.8rem;
-  color: #6a4e8f;
-  margin-bottom: 15px;
+  color: #b6ffb6;
+  font-size: 1.2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  text-shadow: 1px 1px 2px #d3b1ea;
+  border-bottom: 1px solid #466b46;
 }
 
-/* Botones al lado del título del semestre */
-.btns-semester {
-  display: flex;
-  gap: 12px;
+.semester-content {
+  display: none;
+  padding: 1rem;
+  background-color: #111511;
 }
 
-.btn-emoji {
-  cursor: pointer;
-  font-size: 1.5rem;
-  user-select: none;
-  transition: transform 0.2s ease;
-  color: #7a53b7;
-  filter: drop-shadow(0 0 2px #b4a5d3);
-}
-
-.btn-emoji:hover {
-  transform: scale(1.25);
-  color: #a287cc;
-  filter: drop-shadow(0 0 4px #d3c2f2);
-}
-
-/* Lista de cursos */
-.courses-list {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-/* Cada curso */
 .course {
-  background: #f0d7f7;
-  border-radius: 12px;
-  padding: 10px 15px;
+  background-color: #222;
+  border: 1px solid #3a5e3a;
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+  padding: 0.8rem;
   display: flex;
   align-items: center;
-  box-shadow: 0 2px 5px rgba(156, 120, 187, 0.4);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
+  justify-content: space-between;
+  box-shadow: 0 0 6px #3aff3a22;
+  transition: transform 0.3s ease;
 }
 
-body.night .course {
-  background: #5c5470;
-  box-shadow: 0 2px 5px rgba(113, 98, 145, 0.7);
+.course:hover {
+  transform: scale(1.01);
 }
 
-/* Checkbox */
-.course input[type="checkbox"] {
-  margin-right: 15px;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  accent-color: #9e81c9;
-  transition: accent-color 0.3s ease;
+.course.approved {
+  background-color: #203520;
+  border-color: #64ff64;
+  box-shadow: 0 0 8px #aaffaa;
+  text-decoration: line-through;
+  color: #a0ffa0;
 }
 
-.course input[type="checkbox"]:checked {
-  accent-color: #4b3674;
+.course-buttons {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
 }
 
-/* Nombre del curso */
-.course-name {
-  flex-grow: 1;
-  font-size: 1.15rem;
-  color: #5e3a8a;
-  user-select: none;
-  font-weight: 600;
-}
-
-/* Ícono ojo para prerrequisitos */
-.eye-icon {
-  margin-left: 12px;
-  cursor: pointer;
-  font-size: 1.25rem;
-  user-select: none;
-  color: #7d5da8;
-  filter: drop-shadow(0 0 2px #d1b0e5);
-  transition: color 0.3s ease;
-  position: relative;
-}
-
-.eye-icon:hover {
-  color: #a77dc9;
-  filter: drop-shadow(0 0 5px #e1c4ff);
-}
-
-/* Emoji curso */
-.course-emoji {
-  margin-left: 10px;
-  font-size: 1.35rem;
-  user-select: none;
-  filter: drop-shadow(0 0 2px #c3a6db);
-}
-
-/* Tooltip para prerrequisitos */
-.tooltip {
-  position: absolute;
-  background: #bda0f7cc;
-  padding: 6px 12px;
-  border-radius: 10px;
-  color: #3d2954;
-  font-size: 0.9rem;
-  white-space: nowrap;
-  top: 35px;
-  left: 50%;
-  transform: translateX(-50%);
-  box-shadow: 0 0 8px #a18ee0cc;
-  z-index: 1000;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.tooltip.show {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* Modal para notas */
-#notes-modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  background: #efd9fc;
-  padding: 25px 35px;
-  border-radius: 20px;
-  box-shadow: 0 0 15px #a585d0cc;
-  transform: translate(-50%, -50%);
-  display: none;
-  z-index: 1100;
-  max-width: 320px;
-  width: 90%;
-}
-
-#notes-modal h3 {
-  font-family: 'Lucida Handwriting', cursive;
-  margin-bottom: 15px;
-  color: #5a3e85;
-}
-
-#notes-modal label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 600;
-  color: #684a9a;
-}
-
-#notes-modal input[type="number"] {
-  width: 100%;
-  padding: 6px 10px;
-  border: 2px solid #ad93d4;
-  border-radius: 10px;
-  font-size: 1rem;
-  font-weight: 500;
-  color: #3b2861;
-  outline: none;
-  transition: border-color 0.3s ease;
-}
-
-#notes-modal input[type="number"]:focus {
-  border-color: #7e5bb8;
-}
-
-#notes-modal button {
-  margin-top: 18px;
-  padding: 8px 18px;
+button {
+  background-color: #3a5e3a;
   border: none;
-  background: #9e7ddb;
-  color: #fff;
-  font-weight: 700;
-  border-radius: 18px;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
   cursor: pointer;
-  box-shadow: 0 0 8px #ac9de0;
-  transition: background-color 0.3s ease;
+  color: #ffffff;
+  font-size: 1rem;
+  transition: background-color 0.3s;
 }
 
-#notes-modal button:hover {
-  background: #7a57c1;
+button:hover {
+  background-color: #5aff5a;
+  color: #000;
 }
 
-/* Fondo modal overlay */
-#modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #4b3a6a99;
-  z-index: 1050;
-  display: none;
+input[type='number'] {
+  width: 60px;
+  padding: 0.2rem;
+  border-radius: 6px;
+  border: 1px solid #4a7e4a;
+  background-color: #000;
+  color: #aaffaa;
+  text-align: center;
+  font-family: monospace;
 }
 
-/* Responsivo */
-@media (max-width: 700px) {
-  body {
-    padding: 12px;
+footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 2rem;
+  font-style: italic;
+  color: #9ee69e;
+  border-top: 1px solid #2e4e2e;
+}
+
+footer::after {
+  content: "Te ama tu Leo";
+  display: block;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-family: 'Dancing Script', cursive;
+  color: #b4ffb4;
+}
+
+.romantic-message {
+  font-style: italic;
+  color: #caffca;
+  background-color: #2d3d2d;
+  padding: 1rem;
+  margin: 1rem auto;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 80%;
+  box-shadow: 0 0 12px #6aff6a77;
+  transition: all 0.5s;
+}
+
+.magic-stars {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #aaffaa;
+  animation: sparkle 1s ease-out forwards;
+}
+
+@keyframes sparkle {
+  0% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
   }
-  .semester {
-    padding: 15px 20px;
-  }
-  header h1 {
-    font-size: 1.8rem;
-  }
-  .btn-emoji {
-    font-size: 1.3rem;
-  }
-  .course-name {
-    font-size: 1rem;
+  100% {
+    transform: scale(1.8) translateY(-40px);
+    opacity: 0;
   }
 }
