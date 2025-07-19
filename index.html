@@ -2,39 +2,20 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Plan de Estudios Medicina</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Malla Curricular Rock</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
-    <h1>📚 Plan de Estudios - Slytherin</h1>
+    <h1>🌌 Malla Curricular Medicina - Estilo Rock & Noche 🌙</h1>
   </header>
 
-  <main>
-    <section id="plan-container">
-      <!-- Aquí se desplegarán los semestres y cursos dinámicamente -->
-    </section>
+  <main id="malla"></main>
 
-    <section id="mensaje-romantico" style="margin-top: 1rem; font-style: italic; color: #D1627A;">
-      <!-- Mensaje romántico aparecerá aquí -->
-    </section>
-
-    <div id="firma" style="margin-top: 2rem; font-style: italic; color: #7B1E3A; font-weight: bold;">
-      Te ama tu Leo
-    </div>
-
-    <section id="botones-magic" style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-      <button id="btn-guardar" title="Guardar">💾</button>
-      <button id="btn-cargar" title="Cargar">📥</button>
-      <button id="btn-limpiar" title="Limpiar Todo">🔄</button>
-      <button id="btn-resumen" title="Resumen">🧮</button>
-      <!-- Puedes agregar más botones con emojis -->
-    </section>
-  </main>
-
-  <footer style="margin-top: 3rem; text-align: center; color: #4A1B25; font-size: 0.9rem;">
-    &copy; 2025 Proyecto Slytherin
+  <footer>
+    <button onclick="desbloquearTodo()">🔓 Desbloquear todo</button>
+    <button onclick="reiniciar()">🔁 Reiniciar</button>
   </footer>
 
   <script src="script.js"></script>
