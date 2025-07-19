@@ -1,5 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const semestres = [
+const semestres = [
     {
       nombre: "Primer Semestre",
       cursos: [
