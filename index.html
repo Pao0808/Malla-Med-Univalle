@@ -1,40 +1,32 @@
-<!DOCTYPE html><html lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Plan de Estudios Mágico de Paola</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Plan de Estudios para Paola 🐍✨</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=EB+Garamond&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="app-container">
-    <header>
-      <h1>📚 Plan de Estudios Mágico de Paola</h1>
-      <p class="subtitle">Hecho con amor y magia por tu Leo 💚</p>
-    </header><main id="semestres-container">
-  <!-- Aquí se insertarán dinámicamente los semestres -->
-</main>
+  <header>
+    <h1>Plan de Estudios para Paola 🐍✨</h1>
+    <button id="modeBtn" title="Cambiar modo (móvil/tablet/laptop)">📲</button>
+  </header>
 
-<footer>
-  <p class="firma">Te ama tu Leo</p>
-</footer>
+  <main id="mainContent"></main>
 
-<!-- Botones flotantes principales -->
-<div class="floating-buttons">
-  <button id="guardar-btn" title="Guardar"><span>💾</span></button>
-  <button id="cargar-btn" title="Cargar"><span>📥</span></button>
-  <button id="limpiar-btn" title="Limpiar todo"><span>🔄</span></button>
-  <button id="resumen-btn" title="Ver resumen"><span>🧮</span></button>
-  <button id="modo-magico-btn" title="Activar magia"><span>🎩</span></button>
-</div>
+  <footer>
+    <p class="firma">Te ama tu Leo 💚</p>
+  </footer>
 
-<!-- Modal romántico para frases -->
-<div id="mensaje-romantico" class="mensaje-romantico oculto"></div>
-
-<script src="script.js"></script>
-
+  <!-- Modal requisitos -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <span id="modalClose" class="modal-close">✖️</span>
+      <h2>Requisitos</h2>
+      <ul id="modalReqList"></ul>
+    </div>
   </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
