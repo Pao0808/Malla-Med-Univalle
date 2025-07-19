@@ -79,37 +79,38 @@ document.addEventListener('DOMContentLoaded', () => {
     "Estoy orgulloso de ti, siempre estaré aquí para apoyarte. Te ama tu Leo. 🐍",
   ];
 
-  // Contenedor principal
+  // Elementos del DOM
   const container = document.getElementById('plan-container');
   const mensajeArea = document.getElementById('mensaje-romantico');
   const firma = document.getElementById('firma');
 
-  // Modal para requisitos
   const modal = document.getElementById('modal');
   const modalContent = document.getElementById('modal-content');
   const modalClose = document.getElementById('modal-close');
 
   let notasGuardadas = {};
 
-  // Mostrar mensaje romántico random
+  // Función para mostrar mensaje romántico random
   function mostrarMensaje() {
     const msg = mensajesRomanticos[Math.floor(Math.random() * mensajesRomanticos.length)];
     mensajeArea.textContent = msg;
   }
 
-  // Crear destellos mágicos
+  // Crear destellos mágicos en un elemento
   function crearDestellos(elemento) {
     elemento.classList.add('destellos');
-    setTimeout(() => elemento.classList.remove('destellos'), 2000);
+    setTimeout(() => {
+      elemento.classList.remove('destellos');
+    }, 2000);
   }
 
-  // Guardar datos en localStorage
+  // Guardar notas y estados en localStorage
   function guardarDatos() {
     localStorage.setItem('notasSlytherin', JSON.stringify(notasGuardadas));
     alert('Datos guardados, Paola 💾✨');
   }
 
-  // Cargar datos de localStorage
+  // Cargar datos desde localStorage
   function cargarDatos() {
     const datos = localStorage.getItem('notasSlytherin');
     if (datos) {
@@ -125,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Calcular promedio semestre
+  // Calcular promedio de un semestre
   function calcularPromedio(semestreIndex) {
     const semestre = semestres[semestreIndex];
     let suma = 0, count = 0;
@@ -148,12 +149,33 @@ document.addEventListener('DOMContentLoaded', () => {
     span.textContent = calcularPromedio(semestreIndex);
   }
 
-  // Revisar requisitos cumplidos
-  function cumpleRequisitos(semestreIndex, curso) {
+  // Verifica si el usuario cumple requisitos para cursar/aprobar
+  function cumpleRequisitos(curso) {
     if (curso.requisitos.length === 0) return true;
     return curso.requisitos.every(req => {
-      for (let i=0; i < semestres.length; i++) {
-        const sem = semestres[i];
+      for (const sem of semestres) {
         const c = sem.cursos.find(x => x.nombre === req);
         if (c) {
           const key = `${sem.nombre}-${c.nombre}`;
+          if (!notasGuardadas[key] || !notasGuardadas[key].aprobado) {
+            return false;
+          }
+        }
+      }
+      return true;
+    });
+  }
+
+  // Actualizar estado del curso (aprobado o no)
+  function actualizarEstadoCurso(key) {
+    const checkbox = document.querySelector(`input[type="checkbox"][data-curso="${key}"]`);
+    const inputNota = document.querySelector(`input[data-curso="${key}"]`);
+    const btnRetirar = document.querySelector(`button[data-retirar="${key}"]`);
+
+    if (!checkbox || !inputNota || !btnRetirar) return;
+
+    const aprobado = checkbox.checked;
+    let nota = Number(inputNota.value);
+
+    // Si nota no es número o fuera de rango, limpiar aprobación
+    if (isNaN(nota) ||
