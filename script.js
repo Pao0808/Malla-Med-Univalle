@@ -1,142 +1,210 @@
-const semestres = [
-  {
-    nombre: "Primer Semestre",
-    cursos: [
-      { nombre: "Anatomía I", requisitos: [] },
-      { nombre: "Genética", requisitos: [] },
-      { nombre: "Histología I", requisitos: [] },
-      { nombre: "Informática Aplicada", requisitos: [] },
-    ],
-  },
-  {
-    nombre: "Segundo Semestre",
-    cursos: [
-      { nombre: "Anatomía II", requisitos: ["Anatomía I"] },
-      { nombre: "Embriología", requisitos: ["Genética"] },
-      { nombre: "Histología II", requisitos: ["Histología I"] },
-      { nombre: "Bioquímica I", requisitos: [] },
-      { nombre: "Salud Pública I", requisitos: [] },
-      { nombre: "Inglés Técnico I", requisitos: [] },
-    ],
-  },
-  {
-    nombre: "Tercer Semestre",
-    cursos: [
-      { nombre: "Bioquímica II", requisitos: ["Bioquímica I"] },
-      { nombre: "Fisiología I", requisitos: ["Anatomía II"] },
-      { nombre: "Microbiología I", requisitos: [] },
-      { nombre: "Patología I", requisitos: ["Anatomía II", "Histología II"] },
-      { nombre: "Biofísica", requisitos: ["Anatomía II"] },
-      { nombre: "Inglés Técnico II", requisitos: ["Inglés Técnico I"] },
-    ],
-  },
-  {
-    nombre: "Cuarto Semestre",
-    cursos: [
-      { nombre: "Bioquímica III", requisitos: ["Bioquímica II"] },
-      { nombre: "Fisiología II", requisitos: ["Fisiología I"] },
-      { nombre: "Microbiología II", requisitos: ["Microbiología I"] },
-      { nombre: "Parasitología", requisitos: ["Microbiología I"] },
-      { nombre: "Patología II", requisitos: ["Patología I"] },
-      { nombre: "Psicología Médica", requisitos: [] },
-      { nombre: "Sociología y Ética Médica", requisitos: [] },
-      { nombre: "Electiva (Nutrición)", requisitos: [] },
-    ],
-  },
-  {
-    nombre: "Quinto Semestre",
-    cursos: [
-      { nombre: "Semiología General y Especial I", requisitos: ["Fisiología II", "Bioquímica III"] },
-      { nombre: "Técnica Quirúrgica I", requisitos: ["Fisiología II"] },
-      { nombre: "Farmacología y Terapéutica I", requisitos: ["Fisiología II", "Bioquímica III"] },
-      { nombre: "Fisiopatología I", requisitos: ["Fisiología II", "Patología II"] },
-      { nombre: "Patología III", requisitos: ["Patología II"] },
-      { nombre: "Inmunología", requisitos: ["Microbiología II", "Patología II"] },
-    ],
-  },
-  {
-    nombre: "Sexto Semestre",
-    cursos: [
-      { nombre: "Semiología General y Especial II", requisitos: ["Semiología General y Especial I"] },
-      { nombre: "Técnica Quirúrgica II", requisitos: ["Técnica Quirúrgica I"] },
-      { nombre: "Farmacología y Terapéutica II", requisitos: ["Farmacología y Terapéutica I"] },
-      { nombre: "Fisiopatología II", requisitos: ["Fisiopatología I"] },
-      { nombre: "Anestesiología", requisitos: ["Fisiología II"] },
-      { nombre: "Salud Pública II", requisitos: ["Salud Pública I"] },
-      { nombre: "Imagenología", requisitos: ["Anatomía II"] },
-    ],
-  },
-];
+document.addEventListener('DOMContentLoaded', () => {
+  const semestres = [
+    {
+      nombre: "Primer Semestre",
+      cursos: [
+        { nombre: "Anatomía I", emoji: "🦴", requisitos: [] },
+        { nombre: "Genética", emoji: "🧬", requisitos: [] },
+        { nombre: "Histología I", emoji: "🔬", requisitos: [] },
+        { nombre: "Informática Aplicada", emoji: "💻", requisitos: [] },
+      ],
+    },
+    {
+      nombre: "Segundo Semestre",
+      cursos: [
+        { nombre: "Anatomía II", emoji: "🦴", requisitos: ["Anatomía I"] },
+        { nombre: "Embriología", emoji: "👶", requisitos: ["Genética"] },
+        { nombre: "Histología II", emoji: "🔬", requisitos: ["Histología I"] },
+        { nombre: "Bioquímica I", emoji: "⚗️", requisitos: [] },
+        { nombre: "Salud Pública I", emoji: "🏥", requisitos: [] },
+        { nombre: "Inglés Técnico I", emoji: "📚", requisitos: [] },
+      ],
+    },
+    {
+      nombre: "Tercer Semestre",
+      cursos: [
+        { nombre: "Bioquímica II", emoji: "⚗️", requisitos: ["Bioquímica I"] },
+        { nombre: "Fisiología I", emoji: "❤️", requisitos: ["Anatomía II"] },
+        { nombre: "Microbiología I", emoji: "🦠", requisitos: [] },
+        { nombre: "Patología I", emoji: "🩸", requisitos: ["Anatomía II", "Histología II"] },
+        { nombre: "Biofísica", emoji: "🔭", requisitos: ["Anatomía II"] },
+        { nombre: "Inglés Técnico II", emoji: "📚", requisitos: ["Inglés Técnico I"] },
+      ],
+    },
+    {
+      nombre: "Cuarto Semestre",
+      cursos: [
+        { nombre: "Bioquímica III", emoji: "⚗️", requisitos: ["Bioquímica II"] },
+        { nombre: "Fisiología II", emoji: "❤️", requisitos: ["Fisiología I"] },
+        { nombre: "Microbiología II", emoji: "🦠", requisitos: ["Microbiología I"] },
+        { nombre: "Parasitología", emoji: "🐛", requisitos: ["Microbiología I"] },
+        { nombre: "Patología II", emoji: "🩸", requisitos: ["Patología I"] },
+        { nombre: "Psicología Médica", emoji: "🧠", requisitos: [] },
+        { nombre: "Sociología y Ética Médica", emoji: "⚖️", requisitos: [] },
+        { nombre: "Electiva (Nutrición)", emoji: "🥗", requisitos: [] },
+      ],
+    },
+    {
+      nombre: "Quinto Semestre",
+      cursos: [
+        { nombre: "Semiología General y Especial I", emoji: "🩺", requisitos: ["Fisiología II", "Bioquímica III"] },
+        { nombre: "Técnica Quirúrgica I", emoji: "🔪", requisitos: ["Fisiología II"] },
+        { nombre: "Farmacología y Terapéutica I", emoji: "💊", requisitos: ["Fisiología II", "Bioquímica III"] },
+        { nombre: "Fisiopatología I", emoji: "⚕️", requisitos: ["Fisiología II", "Patología II"] },
+        { nombre: "Patología III", emoji: "🩸", requisitos: ["Patología II"] },
+        { nombre: "Inmunología", emoji: "🛡️", requisitos: ["Microbiología II", "Patología II"] },
+      ],
+    },
+    {
+      nombre: "Sexto Semestre",
+      cursos: [
+        { nombre: "Semiología General y Especial II", emoji: "🩺", requisitos: ["Semiología General y Especial I"] },
+        { nombre: "Técnica Quirúrgica II", emoji: "🔪", requisitos: ["Técnica Quirúrgica I"] },
+        { nombre: "Farmacología y Terapéutica II", emoji: "💊", requisitos: ["Farmacología y Terapéutica I"] },
+        { nombre: "Fisiopatología II", emoji: "⚕️", requisitos: ["Fisiopatología I"] },
+        { nombre: "Anestesiología", emoji: "💉", requisitos: ["Fisiología II"] },
+        { nombre: "Salud Pública II", emoji: "🏥", requisitos: ["Salud Pública I"] },
+        { nombre: "Imagenología", emoji: "🖼️", requisitos: ["Anatomía II"] },
+      ],
+    },
+  ];
 
-const mensajes = [
-  "Sigue adelante, Paola. Tu magia está en tu esfuerzo. 💚",
-  "Cada materia es un paso más cerca de tus sueños. ✨",
-  "No estás sola, siempre estaré contigo. Te ama tu Leo. 🐍",
-  "Estoy tan orgulloso de ti, bruja hermosa. 🌟",
-  "¡Tú puedes con todo, Paola! 💪✨",
-  "No hay hechizo más fuerte que tu dedicación. 💖",
-];
+  const mensajesRomanticos = [
+    "Cada paso que das es un hechizo más hacia tus sueños, Paola. 💖",
+    "Con cada materia aprobada, brillas más, mi bruja favorita. ✨",
+    "No hay hechizo más poderoso que tu esfuerzo y dedicación. Te amo, Paola. 🌟",
+    "Sigue adelante, mi amor, tu magia está en cada nota que escribes. 💌",
+    "Estoy orgulloso de ti, siempre estaré aquí para apoyarte. Te ama tu Leo. 🐍",
+  ];
 
-const contenedor = document.getElementById("contenedor");
-const mensaje = document.getElementById("mensaje");
+  const container = document.getElementById('plan-container');
+  const mensajeArea = document.getElementById('mensaje-romantico');
+  const firma = document.getElementById('firma');
 
-function mostrarMensaje() {
-  mensaje.textContent = mensajes[Math.floor(Math.random() * mensajes.length)];
-}
+  const modal = document.getElementById('modal');
+  const modalContent = document.getElementById('modal-content');
+  const modalClose = document.getElementById('modal-close');
 
-function crearPlan() {
-  semestres.forEach((semestre) => {
-    const div = document.createElement("div");
-    div.className = "semestre";
-    const titulo = document.createElement("h3");
-    titulo.textContent = semestre.nombre;
-    div.appendChild(titulo);
+  let notasGuardadas = {};
 
-    semestre.cursos.forEach((curso) => {
-      const fila = document.createElement("div");
-      fila.className = "curso";
+  // Mostrar mensaje romántico random
+  function mostrarMensaje() {
+    const msg = mensajesRomanticos[Math.floor(Math.random() * mensajesRomanticos.length)];
+    mensajeArea.textContent = msg;
+  }
 
-      const label = document.createElement("label");
-      label.textContent = curso.nombre;
+  // Crear destellos mágicos
+  function crearDestellos(elemento) {
+    elemento.classList.add('destellos');
+    setTimeout(() => elemento.classList.remove('destellos'), 2000);
+  }
 
-      const nota = document.createElement("input");
-      nota.type = "number";
-      nota.min = 1;
-      nota.max = 100;
-      nota.placeholder = "Nota";
+  // Guardar notas en localStorage
+  function guardarDatos() {
+    localStorage.setItem('notasSlytherin', JSON.stringify(notasGuardadas));
+    alert('Datos guardados, Paola 💾✨');
+  }
 
-      const aprobar = document.createElement("input");
-      aprobar.type = "checkbox";
-
-      aprobar.addEventListener("change", () => {
-        if (aprobar.checked && !cumpleRequisitos(curso)) {
-          alert("No puedes aprobar esta materia aún, mi amor. 🧙‍♀️");
-          aprobar.checked = false;
-        } else if (aprobar.checked) {
-          mostrarMensaje();
-        }
-      });
-
-      fila.appendChild(label);
-      fila.appendChild(nota);
-      fila.appendChild(aprobar);
-      div.appendChild(fila);
-    });
-
-    contenedor.appendChild(div);
-  });
-}
-
-function cumpleRequisitos(curso) {
-  return curso.requisitos.every(req => {
-    const checkboxes = document.querySelectorAll(".curso");
-    for (let c of checkboxes) {
-      const label = c.querySelector("label");
-      const checkbox = c.querySelector("input[type='checkbox']");
-      if (label.textContent === req && checkbox.checked) return true;
+  // Cargar notas de localStorage
+  function cargarDatos() {
+    const datos = localStorage.getItem('notasSlytherin');
+    if (datos) {
+      notasGuardadas = JSON.parse(datos);
+      for (const key in notasGuardadas) {
+        const inputNota = document.querySelector(`input[data-curso="${key}"]`);
+        const checkbox = document.querySelector(`input[type="checkbox"][data-curso="${key}"]`);
+        if (inputNota) inputNota.value = notasGuardadas[key].nota || '';
+        if (checkbox) checkbox.checked = notasGuardadas[key].aprobado || false;
+        actualizarEstadoCurso(key);
+      }
+      alert('Datos cargados, Paola 💖');
     }
-    return false;
-  });
-}
+  }
 
-crearPlan();
+  // Calcular promedio de un semestre
+  function calcularPromedio(semestreIndex) {
+    const semestre = semestres[semestreIndex];
+    let suma = 0, count = 0;
+    semestre.cursos.forEach(curso => {
+      const key = `${semestre.nombre}-${curso.nombre}`;
+      if (notasGuardadas[key] && notasGuardadas[key].nota) {
+        const notaNum = Number(notasGuardadas[key].nota);
+        if (!isNaN(notaNum)) {
+          suma += notaNum;
+          count++;
+        }
+      }
+    });
+    return count ? (suma / count).toFixed(2) : '--';
+  }
+
+  // Actualizar promedio en la UI
+  function actualizarPromedioUI(semestreIndex) {
+    const span = document.getElementById(`promedio-${semestreIndex}`);
+    span.textContent = calcularPromedio(semestreIndex);
+  }
+
+  // Revisar si un curso cumple requisitos
+  function cumpleRequisitos(curso) {
+    if (curso.requisitos.length === 0) return true;
+    return curso.requisitos.every(req => {
+      // Buscar si requisito aprobado
+      for (const sem of semestres) {
+        const c = sem.cursos.find(cu => cu.nombre === req);
+        if (c) {
+          const key = `${sem.nombre}-${c.nombre}`;
+          if (!(notasGuardadas[key] && notasGuardadas[key].aprobado)) return false;
+        }
+      }
+      return true;
+    });
+  }
+
+  // Actualizar estado de un curso: bloqueado o habilitado
+  function actualizarEstadoCurso(key) {
+    const inputNota = document.querySelector(`input[data-curso="${key}"]`);
+    const checkbox = document.querySelector(`input[type="checkbox"][data-curso="${key}"]`);
+    const cursoElem = document.querySelector(`.curso[data-curso="${key}"]`);
+    if (!cursoElem) return;
+
+    const [semNombre, cursoNombre] = key.split('-');
+    const semestre = semestres.find(s => s.nombre === semNombre);
+    if (!semestre) return;
+    const curso = semestre.cursos.find(c => c.nombre === cursoNombre);
+
+    if (cumpleRequisitos(curso)) {
+      cursoElem.classList.remove('bloqueado');
+      if (checkbox) checkbox.disabled = false;
+      if (inputNota) inputNota.disabled = false;
+    } else {
+      cursoElem.classList.add('bloqueado');
+      if (checkbox) {
+        checkbox.checked = false;
+        checkbox.disabled = true;
+      }
+      if (inputNota) {
+        inputNota.value = '';
+        inputNota.disabled = true;
+      }
+      if (notasGuardadas[key]) {
+        notasGuardadas[key].aprobado = false;
+        notasGuardadas[key].nota = '';
+      }
+    }
+  }
+
+  // Crear UI de cursos y semestres
+  function crearPlan() {
+    semestres.forEach((semestre, index) => {
+      const semDiv = document.createElement('div');
+      semDiv.classList.add('semestre');
+
+      const semHeader = document.createElement('div');
+      semHeader.classList.add('semestre-header');
+      semHeader.textContent = semestre.nombre;
+
+      const promedioSpan = document.createElement('span');
+      promedioSpan.id = `promedio-${index}`;
+      promedioSpan.textContent = '--';
+      promedioSpan.style.fontWeight = 'bold';
+      promedioSpan.style.marginLeft = '10px';
