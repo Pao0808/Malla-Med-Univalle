@@ -1,175 +1,87 @@
-/* Paleta de colores rojo vino y tonalidades */
-:root {
-  --rojo-vino: #7B1E3A;
-  --borgoña: #9B2C45;
-  --rosa-oscuro: #D1627A;
-  --marfil-claro: #FCE8EB;
-  --gris-rosado: #4A1B25;
-  --fondo: #2B0D1A;
-  --texto: #FCE8EB;
-  --texto-secundario: #D1627A;
-  --boton-fondo: #9B2C45;
-  --boton-hover: #7B1E3A;
-}
-
-/* Reset básico */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
 body {
-  background-color: var(--fondo);
-  color: var(--texto);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem;
+  margin: 0;
+  font-family: 'Courier New', monospace;
+  background: radial-gradient(ellipse at top, #0a0f1c, #000);
+  color: #f0f0f0;
+  background-image: url('https://www.transparenttextures.com/patterns/stardust.png'),
+                    linear-gradient(to bottom, #0a0f1c, #000);
+  background-repeat: repeat, no-repeat;
+  background-size: auto, cover;
 }
 
-header h1 {
-  color: var(--rojo-vino);
-  font-weight: 700;
-  margin-bottom: 1.5rem;
+header {
   text-align: center;
-  text-shadow: 0 0 5px var(--rosa-oscuro);
+  padding: 2rem;
+  background: rgba(10, 10, 30, 0.9);
+  box-shadow: 0 0 15px #6c63ff;
+}
+
+h1 {
+  color: #fff;
+  text-shadow: 2px 2px #bb00ff;
+  font-size: 1.8rem;
 }
 
 main {
-  width: 100%;
-  max-width: 900px;
+  padding: 1rem;
 }
 
-/* Semestres */
 .semestre {
-  background-color: var(--borgoña);
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: rgba(15, 15, 35, 0.6);
+  border-left: 4px solid #6c63ff;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #3d3d5c;
+}
+
+.semestre h2 {
+  color: #ffffff;
+  font-size: 1.5rem;
   margin-bottom: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 0 10px var(--gris-rosado);
-  overflow: hidden;
-}
-
-.semestre-header {
-  background-color: var(--rojo-vino);
-  padding: 0.75rem 1rem;
-  cursor: pointer;
-  user-select: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: var(--marfil-claro);
-  font-weight: 700;
-  font-size: 1.1rem;
-}
-
-.semestre-header:hover {
-  background-color: var(--rosa-oscuro);
-}
-
-.cursos-lista {
-  display: none;
-  padding: 0.75rem 1rem;
-  background-color: var(--marfil-claro);
-  color: var(--gris-rosado);
+  text-shadow: 1px 1px #000;
 }
 
 .curso {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid var(--gris-rosado);
+  background-color: rgba(20, 20, 40, 0.85);
+  border: 1px solid #555;
+  border-left: 5px solid #bb00ff;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 10px #222;
+  transition: all 0.3s ease;
 }
 
-.curso:last-child {
-  border-bottom: none;
+.curso.locked {
+  opacity: 0.3;
+  pointer-events: none;
 }
 
-.curso-info {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 600;
+.curso.unlocked {
+  border-left-color: #00ffcc;
+  box-shadow: 0 0 15px #00ffcc;
 }
 
-.curso-emoji {
-  font-size: 1.4rem;
-}
-
-.curso-nombre {
-  font-size: 1rem;
-  color: var(--rojo-vino);
-}
-
-.curso-controls {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-/* Inputs de nota */
-input.nota-input {
-  width: 50px;
-  padding: 0.25rem 0.5rem;
-  font-size: 1rem;
-  border-radius: 4px;
-  border: 1px solid var(--borgoña);
+footer {
   text-align: center;
-  color: var(--gris-rosado);
-  background-color: var(--marfil-claro);
-  transition: border-color 0.3s ease;
+  padding: 1.5rem;
+  background: #111;
 }
 
-input.nota-input:focus {
-  outline: none;
-  border-color: var(--rojo-vino);
-}
-
-/* Botones emoji */
 button {
-  background-color: var(--boton-fondo);
-  border: none;
-  padding: 0.35rem 0.6rem;
-  font-size: 1.2rem;
-  border-radius: 6px;
-  color: var(--marfil-claro);
+  background: #222;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 0.5rem 1.5rem;
+  margin: 0 0.5rem;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.15s ease;
-  user-select: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
 button:hover {
-  background-color: var(--boton-hover);
-  transform: scale(1.1);
+  background: #444;
+  color: #0ff;
 }
-
-button:disabled {
-  background-color: #bbb;
-  cursor: not-allowed;
-  transform: none;
-  color: #666;
-}
-
-/* Mensaje romántico */
-#mensaje-romantico {
-  font-size: 1.1rem;
-  text-align: center;
-  min-height: 2.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  background-color: var(--marfil-claro);
-  color: var(--rojo-vino);
-  box-shadow: 0 0 8px var(--rosa-oscuro);
-}
-
-/* Firma */
-#firma {
-  font-size: 1.2rem;
-  text-align: center;
-  font-style: italic;
-}
-
-/*
