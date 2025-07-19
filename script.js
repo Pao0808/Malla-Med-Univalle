@@ -1,4 +1,5 @@
-const semestres = [
+document.addEventListener('DOMContentLoaded', () => {
+  const semestres = [
     {
       nombre: "Primer Semestre",
       cursos: [
@@ -80,22 +81,12 @@ const semestres = [
   const mensajeArea = document.getElementById('mensaje-romantico');
   const firma = document.getElementById('firma');
 
-  const modal = document.getElementById('modal');
-  const modalContent = document.getElementById('modal-content');
-  const modalClose = document.getElementById('modal-close');
-
   let notasGuardadas = {};
 
   // Mostrar mensaje romántico random
   function mostrarMensaje() {
     const msg = mensajesRomanticos[Math.floor(Math.random() * mensajesRomanticos.length)];
     mensajeArea.textContent = msg;
-  }
-
-  // Crear destellos mágicos
-  function crearDestellos(elemento) {
-    elemento.classList.add('destellos');
-    setTimeout(() => elemento.classList.remove('destellos'), 2000);
   }
 
   // Guardar notas en localStorage
@@ -117,10 +108,11 @@ const semestres = [
         actualizarEstadoCurso(key);
       }
       alert('Datos cargados, Paola 💖');
+      actualizarTodosPromedios();
     }
   }
 
-  // Calcular promedio de un semestre
+  // Calcular promedio semestre
   function calcularPromedio(semestreIndex) {
     const semestre = semestres[semestreIndex];
     let suma = 0, count = 0;
@@ -137,17 +129,21 @@ const semestres = [
     return count ? (suma / count).toFixed(2) : '--';
   }
 
-  // Actualizar promedio en la UI
+  // Actualizar promedio en UI
   function actualizarPromedioUI(semestreIndex) {
     const span = document.getElementById(`promedio-${semestreIndex}`);
     span.textContent = calcularPromedio(semestreIndex);
   }
 
-  // Revisar si un curso cumple requisitos
+  // Actualizar todos promedios
+  function actualizarTodosPromedios() {
+    semestres.forEach((_, i) => actualizarPromedioUI(i));
+  }
+
+  // Revisar requisitos cumplidos
   function cumpleRequisitos(curso) {
     if (curso.requisitos.length === 0) return true;
     return curso.requisitos.every(req => {
-      // Buscar si requisito aprobado
       for (const sem of semestres) {
         const c = sem.cursos.find(cu => cu.nombre === req);
         if (c) {
@@ -159,51 +155,18 @@ const semestres = [
     });
   }
 
-  // Actualizar estado de un curso: bloqueado o habilitado
+  // Actualizar estado curso: habilitado o bloqueado
   function actualizarEstadoCurso(key) {
     const inputNota = document.querySelector(`input[data-curso="${key}"]`);
     const checkbox = document.querySelector(`input[type="checkbox"][data-curso="${key}"]`);
     const cursoElem = document.querySelector(`.curso[data-curso="${key}"]`);
     if (!cursoElem) return;
 
-    const [semNombre, cursoNombre] = key.split('-');
+    const [semNombre, cursoNombre] = key.split(/-(.+)/); // Split solo en el primer '-'
     const semestre = semestres.find(s => s.nombre === semNombre);
     if (!semestre) return;
     const curso = semestre.cursos.find(c => c.nombre === cursoNombre);
+    if (!curso) return;
 
     if (cumpleRequisitos(curso)) {
-      cursoElem.classList.remove('bloqueado');
-      if (checkbox) checkbox.disabled = false;
-      if (inputNota) inputNota.disabled = false;
-    } else {
-      cursoElem.classList.add('bloqueado');
-      if (checkbox) {
-        checkbox.checked = false;
-        checkbox.disabled = true;
-      }
-      if (inputNota) {
-        inputNota.value = '';
-        inputNota.disabled = true;
-      }
-      if (notasGuardadas[key]) {
-        notasGuardadas[key].aprobado = false;
-        notasGuardadas[key].nota = '';
-      }
-    }
-  }
-
-  // Crear UI de cursos y semestres
-  function crearPlan() {
-    semestres.forEach((semestre, index) => {
-      const semDiv = document.createElement('div');
-      semDiv.classList.add('semestre');
-
-      const semHeader = document.createElement('div');
-      semHeader.classList.add('semestre-header');
-      semHeader.textContent = semestre.nombre;
-
-      const promedioSpan = document.createElement('span');
-      promedioSpan.id = `promedio-${index}`;
-      promedioSpan.textContent = '--';
-      promedioSpan.style.fontWeight = 'bold';
-      promedioSpan.style.marginLeft = '10px';
+      cursoElem.classList.remove
