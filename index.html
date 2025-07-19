@@ -1,232 +1,40 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html><html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Plan de Estudios Medicina</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plan de Estudios Mágico de Paola</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=EB+Garamond&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <h1>Plan de Estudios Medicina - Paola 🐍✨</h1>
-    <button id="toggle-theme">🌙 Modo Noche</button>
-  </header>
+  <div class="app-container">
+    <header>
+      <h1>📚 Plan de Estudios Mágico de Paola</h1>
+      <p class="subtitle">Hecho con amor y magia por tu Leo 💚</p>
+    </header><main id="semestres-container">
+  <!-- Aquí se insertarán dinámicamente los semestres -->
+</main>
 
-  <main>
-    <!-- SEMESTRE 1 -->
-    <section class="semester" id="sem1">
-      <h2>
-        Primer semestre
-        <span class="btns-semester">
-          <span class="btn-emoji" title="Ver promedio">📊</span>
-          <span class="btn-emoji" title="Limpiar semestre">🧹</span>
-          <span class="btn-emoji" title="Retirar semestre">🚪</span>
-        </span>
-      </h2>
-      <div class="courses-list">
-        <div class="course">
-          <input type="checkbox" id="anat1" />
-          <label class="course-name" for="anat1">Anatomía I</label>
-          <span class="eye-icon" data-prereq="Sin prerrequisitos">👁️</span>
-          <span class="course-emoji">🦴</span>
-        </div>
-        <div class="course">
-          <input type="checkbox" id="bioquim1" />
-          <label class="course-name" for="bioquim1">Bioquímica I</label>
-          <span class="eye-icon" data-prereq="Sin prerrequisitos">👁️</span>
-          <span class="course-emoji">🧪</span>
-        </div>
-        <div class="course">
-          <input type="checkbox" id="histologia" />
-          <label class="course-name" for="histologia">Histología</label>
-          <span class="eye-icon" data-prereq="Sin prerrequisitos">👁️</span>
-          <span class="course-emoji">🔬</span>
-        </div>
-        <div class="course">
-          <input type="checkbox" id="embriologia" />
-          <label class="course-name" for="embriologia">Embriología</label>
-          <span class="eye-icon" data-prereq="Sin prerrequisitos">👁️</span>
-          <span class="course-emoji">👶</span>
-        </div>
-        <div class="course">
-          <input type="checkbox" id="etica" />
-          <label class="course-name" for="etica">Ética Médica</label>
-          <span class="eye-icon" data-prereq="Sin prerrequisitos">👁️</span>
-          <span class="course-emoji">⚖️</span>
-        </div>
-      </div>
-    </section>
+<footer>
+  <p class="firma">Te ama tu Leo</p>
+</footer>
 
-    <!-- SEMESTRE 2 -->
-    <section class="semester" id="sem2">
-      <h2>
-        Segundo semestre
-        <span class="btns-semester">
-          <span class="btn-emoji" title="Ver promedio">📊</span>
-          <span class="btn-emoji" title="Limpiar semestre">🧹</span>
-          <span class="btn-emoji" title="Retirar semestre">🚪</span>
-        </span>
-      </h2>
-      <div class="courses-list">
-        <div class="course">
-          <input type="checkbox" id="anat2" />
-          <label class="course-name" for="anat2">Anatomía II</label>
-          <span class="eye-icon" data-prereq="Se puede cursar si ya pasaste Anatomía I">👁️</span>
-          <span class="course-emoji">🦴</span>
-        </div>
-        <div class="course">
-          <input type="checkbox" id="bioquim2" />
-          <label class="course-name" for="bioquim2">Bioquímica II</label>
-          <span class="eye-icon" data-prereq="Se puede cursar si ya pasaste Bioquímica I">👁️</span>
-          <span class="course-emoji">🧪</span>
-        </div>
-        <div class="course">
-          <input type="checkbox" id="fisiologia1" />
-          <label class="course-name" for="fisiologia1">Fisiología I</label>
-          <span class="eye-icon" data-prereq="Se puede cursar si ya pasaste Anatomía I y Bioquímica I">👁️</span>
-          <span class="course-emoji">❤️</span>
-        </div>
-        <div class="course">
-          <input type="checkbox" id="microbiologia1" />
-          <label class="course-name" for="microbiologia1">Microbiología I</label>
-          <span class="eye-icon" data-prereq="Sin prerrequisitos">👁️</span>
-          <span class="course-emoji">🦠</span>
-        </div>
-        <div class="course">
-          <input type="checkbox" id="histopatologia" />
-          <label class="course-name" for="histopatologia">Histopatología</label>
-          <span class="eye-icon" data-prereq="Se puede cursar si ya pasaste Histología">👁️</span>
-          <span class="course-emoji">🔬</span>
-        </div>
-      </div>
-    </section>
+<!-- Botones flotantes principales -->
+<div class="floating-buttons">
+  <button id="guardar-btn" title="Guardar"><span>💾</span></button>
+  <button id="cargar-btn" title="Cargar"><span>📥</span></button>
+  <button id="limpiar-btn" title="Limpiar todo"><span>🔄</span></button>
+  <button id="resumen-btn" title="Ver resumen"><span>🧮</span></button>
+  <button id="modo-magico-btn" title="Activar magia"><span>🎩</span></button>
+</div>
 
-    <!-- SEMESTRE 3 -->
-    <section class="semester" id="sem3">
-      <h2>
-        Tercer semestre
-        <span class="btns-semester">
-          <span class="btn-emoji" title="Ver promedio">📊</span>
-          <span class="btn-emoji" title="Limpiar semestre">🧹</span>
-          <span class="btn-emoji" title="Retirar semestre">🚪</span>
-        </span>
-      </h2>
-      <div class="courses-list">
-        <div class="course">
-          <input type="checkbox" id="anat3" />
-          <label class="course-name" for="anat3">Anatomía III</label>
-          <span class="eye-icon" data-prereq="Se puede cursar si ya pasaste Anatomía II">👁️</span>
-          <span class="course-emoji">🦴</span>
-        </div>
-        <div class="course">
-          <input type="checkbox" id="bioquim3" />
-          <label class="course-name" for="bioquim3">Bioquímica III</label>
-          <span class="eye-icon" data-prereq="Se puede cursar si ya pasaste Bioquímica II">👁️</span>
-          <span class="course-emoji">🧪</span>
-        </div>
-        <div class="course">
-          <input type="checkbox" id="fisiologia2" />
-          <label class="course-name" for="fisiologia2">Fisiología II</label>
-          <span class="eye-icon" data-prereq="Se puede cursar si ya pasaste Fisiología I">👁️</span>
-          <span class="course-emoji">❤️</span>
-        </div>
-        <div class="course">
-          <input type="checkbox" id="patologia1" />
-          <label class="course-name" for="patologia1">Patología I</label>
-          <span class="eye-icon" data-prereq="Se puede cursar si ya pasaste Histopatología">👁️</span>
-          <span class="course-emoji">🩺</span>
-        </div>
-        <div class="course">
-          <input type="checkbox" id="saludpublica1" />
-          <label class="course-name" for="saludpublica1">Salud Pública I</label>
-          <span class="eye-icon" data-prereq="Sin prerrequisitos">👁️</span>
-          <span class="course-emoji">🏥</span>
-        </div>
-      </div>
-    </section>
+<!-- Modal romántico para frases -->
+<div id="mensaje-romantico" class="mensaje-romantico oculto"></div>
 
-    <!-- SEMESTRE 4 -->
-    <section class="semester" id="sem4">
-      <h2>
-        Cuarto semestre
-        <span class="btns-semester">
-          <span class="btn-emoji" title="Ver promedio">📊</span>
-          <span class="btn-emoji" title="Limpiar semestre">🧹</span>
-          <span class="btn-emoji" title="Retirar semestre">🚪</span>
-        </span>
-      </h2>
-      <div class="courses-list">
-        <div class="course">
-          <input type="checkbox" id="m2" />
-          <label class="course-name" for="m2">Microbiología II</label>
-          <span class="eye-icon" data-prereq="Se puede cursar si ya pasaste Microbiología I">👁️</span>
-          <span class="course-emoji">🦠</span>
-        </div>
-        <div class="course">
-          <input type="checkbox" id="parasitologia" />
-          <label class="course-name" for="parasitologia">Parasitología</label>
-          <span class="eye-icon" data-prereq="Se puede cursar si ya pasaste Microbiología I">👁️</span>
-          <span class="course-emoji">🐛</span>
-        </div>
-        <div class="course">
-          <input type="checkbox" id="p2" />
-          <label class="course-name" for="p2">Patología II</label>
-          <span class="eye-icon" data-prereq="Se puede cursar si ya pasaste Patología I">👁️</span>
-          <span class="course-emoji">🩺</span>
-        </div>
-        <div class="course">
-          <input type="checkbox" id="psicologia" />
-          <label class="course-name" for="psicologia">Psicología Médica</label>
-          <span class="eye-icon" data-prereq="Sin prerrequisitos">👁️</span>
-          <span class="course-emoji">🧠</span>
-        </div>
-        <div class="course">
-          <input type="checkbox" id="sociologia" />
-          <label class="course-name" for="sociologia">Sociología y Ética Médica</label>
-          <span class="eye-icon" data-prereq="Sin prerrequisitos">👁️</span>
-          <span class="course-emoji">⚖️</span>
-        </div>
-        <div class="course">
-          <input type="checkbox" id="electiva" />
-          <label class="course-name" for="electiva">Electiva (Nutrición)</label>
-          <span class="eye-icon" data-prereq="Sin prerrequisitos">👁️</span>
-          <span class="course-emoji">🥗</span>
-        </div>
-      </div>
-    </section>
+<script src="script.js"></script>
 
-    <!-- SEMESTRE 5 -->
-    <section class="semester" id="sem5">
-      <h2>
-        Quinto semestre
-        <span class="btns-semester">
-          <span class="btn-emoji" title="Ver promedio">📊</span>
-          <span class="btn-emoji" title="Limpiar semestre">🧹</span>
-          <span class="btn-emoji" title="Retirar semestre">🚪</span>
-        </span>
-      </h2>
-      <div class="courses-list">
-        <div class="course">
-          <input type="checkbox" id="semiologia1" />
-          <label class="course-name" for="semiologia1">Semiología General y Especial I</label>
-          <span class="eye-icon" data-prereq="Se puede cursar si ya pasaste Fisiología II y Bioquímica III">👁️</span>
-          <span class="course-emoji">🩻</span>
-        </div>
-        <div class="course">
-          <input type="checkbox" id="tecnicaQ1" />
-          <label class="course-name" for="tecnicaQ1">Técnica Quirúrgica I</label>
-          <span class="eye-icon" data-prereq="Se puede cursar si ya pasaste Fisiología II">👁️</span>
-          <span class="course-emoji">🔪</span>
-        </div>
-        <div class="course">
-          <input type="checkbox" id="farmaco1" />
-          <label class="course-name" for="farmaco1">Farmacología y Terapéutica I</label>
-          <span class="eye-icon" data-prereq="Se puede cursar si ya pasaste Fisiología II y Bioquímica III">👁️</span>
-          <span class="course-emoji">💊</span>
-        </div>
-        <div class="course">
-          <input type="checkbox" id="fisiopato1" />
-          <label class="course-name" for="fisiopato1">Fisiopatología I</label>
-          <span class="eye-icon" data-prereq="Se puede cursar si ya pasaste Fisiología II y Patología II">👁️</span>
-          <span class="course-emoji">🧬</span>
-        </div>
+  </div>
+</body>
+</html>
