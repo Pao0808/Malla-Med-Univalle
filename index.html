@@ -2,57 +2,40 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Plan de Estudios de Paola</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Plan de Estudios Slytherin</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>✨ Plan Mágico de Paola ✨</h1>
+    <h1>📚 Plan de Estudios - Slytherin</h1>
   </header>
 
-  <!-- 🎩 Barra de botones mágicos -->
-  <div id="barra-botones" class="barra-botones">
-    <!-- 📋 Acciones de materias -->
-    <button class="boton-magico" title="Aprobar materia">✅</button>
-    <button class="boton-magico" title="Ver requisitos">👁️</button>
-    <button class="boton-magico" title="Ingresar nota">📝</button>
-    <button class="boton-magico" title="Borrar nota">🧹</button>
-    <button class="boton-magico" title="Retirar materia">❌</button>
+  <main>
+    <section id="plan-container">
+      <!-- Aquí se desplegarán los semestres y cursos dinámicamente -->
+    </section>
 
-    <!-- 📊 Información académica -->
-    <button class="boton-magico" title="Ver promedio">📊</button>
-    <button class="boton-magico" title="Resumen académico">🧮</button>
+    <section id="mensaje-romantico" style="margin-top: 1rem; font-style: italic; color: #D1627A;">
+      <!-- Mensaje romántico aparecerá aquí -->
+    </section>
 
-    <!-- 💾 Acciones de datos -->
-    <button class="boton-magico" title="Guardar datos">💾</button>
-    <button class="boton-magico" title="Cargar datos">📥</button>
-    <button class="boton-magico" title="Limpiar todo">🔄</button>
+    <div id="firma" style="margin-top: 2rem; font-style: italic; color: #7B1E3A; font-weight: bold;">
+      Te ama tu Leo
+    </div>
 
-    <!-- 🎩 Estética y personalización -->
-    <button class="boton-magico" title="Modo mágico">🎩</button>
-    <button class="boton-magico" title="Cambio de vista">📲</button>
-    <button class="boton-magico" title="Carta romántica">💌</button>
-  </div>
-
-  <!-- 📚 Contenedor de los semestres y cursos -->
-  <main id="plan-container" class="contenedor-plan">
-    <!-- Aquí se generará dinámicamente el contenido de los cursos -->
+    <section id="botones-magic" style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+      <button id="btn-guardar" title="Guardar">💾</button>
+      <button id="btn-cargar" title="Cargar">📥</button>
+      <button id="btn-limpiar" title="Limpiar Todo">🔄</button>
+      <button id="btn-resumen" title="Resumen">🧮</button>
+      <!-- Puedes agregar más botones con emojis -->
+    </section>
   </main>
 
-  <!-- 💖 Mensajes mágicos y firma -->
-  <section class="mensajes-romanticos">
-    <p id="mensaje-romantico">Eres magia, Paola. ✨</p>
-    <p id="firma"><em>Te ama tu Leo</em></p>
-  </section>
-
-  <!-- 🔮 Modal de requisitos -->
-  <div id="modal" class="modal">
-    <div class="modal-content" id="modal-content">
-      <span class="modal-close" id="modal-close">&times;</span>
-      <p>Debes cumplir los requisitos mágicos para aprobar esta materia. 🧙‍♀️</p>
-    </div>
-  </div>
+  <footer style="margin-top: 3rem; text-align: center; color: #4A1B25; font-size: 0.9rem;">
+    &copy; 2025 Proyecto Slytherin
+  </footer>
 
   <script src="script.js"></script>
 </body>
