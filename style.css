@@ -1,159 +1,258 @@
-/* style.css */
+/* Paleta Slytherin: Verde Oscuro #0B3D0B, Plateado #C0C0C0, Negro #000, Verde Claro #4CAF50, Brillitos */
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
-  margin: 0;
   font-family: 'Georgia', serif;
-  background-color: #0b0c0d;
-  color: #e0e0e0;
-  background-image: url('https://www.transparenttextures.com/patterns/dark-denim-3.png');
-  background-size: cover;
+  background: linear-gradient(135deg, #0B3D0B 30%, #000000 90%);
+  color: #C0C0C0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
-  background-color: #1a2e1a;
-  padding: 1rem;
+  background-color: #0B3D0B;
+  padding: 20px;
   text-align: center;
-  color: #c0ffb3;
-  box-shadow: 0 0 10px #5aff5a;
+  position: relative;
+  color: #C0C0C0;
+  box-shadow: 0 0 15px #4CAF50;
 }
 
-h1 {
-  font-size: 2rem;
-  font-weight: bold;
-  font-style: italic;
+header h1 {
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+  text-shadow: 0 0 5px #4CAF50;
 }
 
-.accordion {
-  margin: 1rem;
-  border-radius: 12px;
-  overflow: hidden;
-  background-color: #1a1f1a;
-  border: 1px solid #2e4e2e;
-}
-
-.semester-title {
-  background-color: #2d3b2d;
-  padding: 1rem;
+#modeBtn {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  background: transparent;
+  border: none;
+  color: #C0C0C0;
+  font-size: 1.5rem;
   cursor: pointer;
-  color: #b6ffb6;
-  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+#modeBtn:hover {
+  color: #4CAF50;
+}
+
+main {
+  flex-grow: 1;
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Semestre acordeón */
+.semester {
+  background-color: #132913;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 0 12px #2E7D32;
+  overflow: hidden;
+}
+
+.semester-header {
+  cursor: pointer;
+  padding: 15px 20px;
+  font-size: 1.4rem;
+  font-weight: bold;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #466b46;
+  color: #C0C0C0;
+  user-select: none;
+}
+
+.semester-header:hover {
+  background-color: #0B3D0B;
+  color: #4CAF50;
 }
 
 .semester-content {
-  display: none;
-  padding: 1rem;
-  background-color: #111511;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  background-color: #1B4D1B;
+  padding: 0 20px;
 }
 
+/* Cursos */
 .course {
-  background-color: #222;
-  border: 1px solid #3a5e3a;
-  border-radius: 8px;
-  margin-bottom: 0.8rem;
-  padding: 0.8rem;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  box-shadow: 0 0 6px #3aff3a22;
-  transition: transform 0.3s ease;
-}
-
-.course:hover {
-  transform: scale(1.01);
-}
-
-.course.approved {
-  background-color: #203520;
-  border-color: #64ff64;
-  box-shadow: 0 0 8px #aaffaa;
-  text-decoration: line-through;
-  color: #a0ffa0;
-}
-
-.course-buttons {
-  display: flex;
-  gap: 0.5rem;
   align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #274127;
+  color: #C0C0C0;
+  font-size: 1.1rem;
 }
 
-button {
-  background-color: #3a5e3a;
-  border: none;
-  padding: 0.4rem 0.6rem;
-  border-radius: 8px;
-  cursor: pointer;
-  color: #ffffff;
-  font-size: 1rem;
-  transition: background-color 0.3s;
+.course:last-child {
+  border-bottom: none;
 }
 
-button:hover {
-  background-color: #5aff5a;
-  color: #000;
+.course-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
 }
 
-input[type='number'] {
-  width: 60px;
-  padding: 0.2rem;
-  border-radius: 6px;
-  border: 1px solid #4a7e4a;
-  background-color: #000;
-  color: #aaffaa;
-  text-align: center;
-  font-family: monospace;
+.course-name.approved {
+  color: #4CAF50;
+  text-decoration: line-through;
+  position: relative;
 }
 
-footer {
-  text-align: center;
-  margin-top: 3rem;
-  padding: 2rem;
-  font-style: italic;
-  color: #9ee69e;
-  border-top: 1px solid #2e4e2e;
-}
-
-footer::after {
-  content: "Te ama tu Leo";
-  display: block;
-  margin-top: 1rem;
-  font-size: 1.2rem;
-  font-family: 'Dancing Script', cursive;
-  color: #b4ffb4;
-}
-
-.romantic-message {
-  font-style: italic;
-  color: #caffca;
-  background-color: #2d3d2d;
-  padding: 1rem;
-  margin: 1rem auto;
-  border-radius: 12px;
-  text-align: center;
-  max-width: 80%;
-  box-shadow: 0 0 12px #6aff6a77;
-  transition: all 0.5s;
-}
-
-.magic-stars {
+.course-name.approved::after {
+  content: '✨';
   position: absolute;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #aaffaa;
-  animation: sparkle 1s ease-out forwards;
+  right: -20px;
+  top: 0;
+  color: #81C784;
+  animation: sparkle 1.5s infinite;
 }
 
 @keyframes sparkle {
-  0% {
-    transform: scale(1) translateY(0);
-    opacity: 1;
+  0%, 100% {opacity: 1; transform: scale(1);}
+  50% {opacity: 0.6; transform: scale(1.2);}
+}
+
+/* Botones */
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+button {
+  background-color: #0B3D0B;
+  border: 1.5px solid #4CAF50;
+  color: #C0C0C0;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 5px 9px;
+  transition: background-color 0.3s, color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button:hover:not(:disabled) {
+  background-color: #4CAF50;
+  color: #0B3D0B;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+  border-color: #274127;
+}
+
+/* Campo nota separado */
+.note-input {
+  width: 60px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1.5px solid #4CAF50;
+  background-color: #0B3D0B;
+  color: #C0C0C0;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.note-input:focus {
+  border-color: #81C784;
+}
+
+/* Promedio al final del semestre con emoji */
+.semester-average {
+  text-align: right;
+  font-weight: bold;
+  padding: 10px 0;
+  font-size: 1.2rem;
+  color: #A5D6A7;
+}
+
+/* Firma al pie */
+footer {
+  text-align: center;
+  padding: 15px;
+  font-style: italic;
+  color: #81C784;
+  font-family: 'Brush Script MT', cursive;
+  background-color: #0B3D0B;
+  box-shadow: 0 -3px 15px #4CAF50;
+  user-select: none;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background-color: #132913;
+  border-radius: 10px;
+  padding: 25px 30px;
+  width: 320px;
+  box-shadow: 0 0 20px #4CAF50;
+  color: #C0C0C0;
+  font-family: 'Georgia', serif;
+}
+
+.modal-close {
+  cursor: pointer;
+  float: right;
+  font-size: 1.2rem;
+  user-select: none;
+  margin-top: -10px;
+}
+
+.modal h2 {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #4CAF50;
+  padding-bottom: 6px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  main {
+    padding: 10px;
   }
-  100% {
-    transform: scale(1.8) translateY(-40px);
-    opacity: 0;
+  .course {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .buttons {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .note-input {
+    width: 100%;
   }
 }
