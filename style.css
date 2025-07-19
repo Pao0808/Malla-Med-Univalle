@@ -1,268 +1,175 @@
-/* Paleta de colores: rojo vino y sus tonos */
+/* Paleta de colores rojo vino y tonalidades */
 :root {
-  --rojo-vino-profundo: #7B1E3A;
+  --rojo-vino: #7B1E3A;
   --borgoña: #9B2C45;
-  --rosa-oscuro-suave: #D1627A;
+  --rosa-oscuro: #D1627A;
   --marfil-claro: #FCE8EB;
-  --gris-rosado-oscuro: #4A1B25;
+  --gris-rosado: #4A1B25;
+  --fondo: #2B0D1A;
+  --texto: #FCE8EB;
+  --texto-secundario: #D1627A;
+  --boton-fondo: #9B2C45;
+  --boton-hover: #7B1E3A;
 }
 
-/* Reset y estilos base */
+/* Reset básico */
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-  background-color: var(--marfil-claro);
-  color: var(--gris-rosado-oscuro);
+  background-color: var(--fondo);
+  color: var(--texto);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 1rem;
 }
 
-header {
-  margin-bottom: 20px;
-  text-align: center;
-  color: var(--rojo-vino-profundo);
-  text-shadow: 1px 1px 3px var(--borgoña);
-}
-
-h1 {
-  font-size: 2.5rem;
+header h1 {
+  color: var(--rojo-vino);
   font-weight: 700;
-  letter-spacing: 3px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  text-shadow: 0 0 5px var(--rosa-oscuro);
 }
 
-/* Barra de botones mágicos */
-.barra-botones {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  justify-content: center;
-  margin-bottom: 30px;
-}
-
-.boton-magico {
-  background-color: var(--rojo-vino-profundo);
-  border: none;
-  color: var(--marfil-claro);
-  font-size: 1.8rem;
-  cursor: pointer;
-  padding: 10px 16px;
-  border-radius: 8px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 3px 8px rgba(123, 30, 58, 0.6);
-  user-select: none;
-}
-
-.boton-magico:hover {
-  background-color: var(--borgoña);
-  transform: scale(1.1);
-  box-shadow: 0 6px 15px rgba(155, 44, 69, 0.8);
-}
-
-/* Contenedor de semestres y cursos */
-.contenedor-plan {
+main {
   width: 100%;
   max-width: 900px;
 }
 
-/* Semestre (acordeón) */
+/* Semestres */
 .semestre {
-  background-color: var(--rosa-oscuro-suave);
-  border-radius: 12px;
-  margin-bottom: 15px;
+  background-color: var(--borgoña);
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px var(--gris-rosado);
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(155, 44, 69, 0.4);
-  color: var(--marfil-claro);
 }
 
 .semestre-header {
-  padding: 14px 20px;
-  font-weight: 700;
-  font-size: 1.4rem;
+  background-color: var(--rojo-vino);
+  padding: 0.75rem 1rem;
   cursor: pointer;
   user-select: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(45deg, var(--rojo-vino-profundo), var(--borgoña));
+  color: var(--marfil-claro);
+  font-weight: 700;
+  font-size: 1.1rem;
 }
 
 .semestre-header:hover {
-  background: linear-gradient(45deg, var(--borgoña), var(--rojo-vino-profundo));
+  background-color: var(--rosa-oscuro);
 }
 
-.semestre-body {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
+.cursos-lista {
+  display: none;
+  padding: 0.75rem 1rem;
   background-color: var(--marfil-claro);
-  color: var(--gris-rosado-oscuro);
-  padding: 0 20px;
-}
-
-/* Cuando el acordeón está activo */
-.semestre.active .semestre-body {
-  padding: 15px 20px 25px;
-  max-height: 1000px; /* suficiente para mostrar contenido */
-  transition: max-height 0.6s ease;
-}
-
-/* Lista de cursos */
-.lista-cursos {
-  list-style: none;
-  margin-top: 10px;
-  padding-left: 0;
+  color: var(--gris-rosado);
 }
 
 .curso {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--marfil-claro);
-  border: 2px solid var(--rojo-vino-profundo);
-  border-radius: 10px;
-  padding: 10px 15px;
-  margin-bottom: 10px;
-  transition: background-color 0.3s ease;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--gris-rosado);
 }
 
-.curso.bloqueado {
-  opacity: 0.5;
-  pointer-events: none;
-  background-color: #f8d7da;
-  border-color: #a71d2a;
-  color: #721c24;
+.curso:last-child {
+  border-bottom: none;
+}
+
+.curso-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
 }
 
 .curso-emoji {
-  font-size: 1.8rem;
-  margin-right: 10px;
+  font-size: 1.4rem;
 }
 
 .curso-nombre {
-  flex-grow: 1;
-  font-weight: 600;
-  font-size: 1.1rem;
-}
-
-/* Input nota */
-.curso input[type="number"] {
-  width: 60px;
-  padding: 6px 8px;
   font-size: 1rem;
-  border: 2px solid var(--rojo-vino-profundo);
-  border-radius: 6px;
-  color: var(--gris-rosado-oscuro);
-  text-align: center;
+  color: var(--rojo-vino);
 }
 
-/* Botones de curso */
-.botones-curso {
+.curso-controls {
   display: flex;
-  gap: 8px;
-  margin-left: 12px;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.botones-curso button {
-  background: var(--borgoña);
-  border: none;
-  color: var(--marfil-claro);
-  font-size: 1.2rem;
-  cursor: pointer;
-  padding: 6px 10px;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
-}
-
-.botones-curso button:hover {
-  background: var(--rojo-vino-profundo);
-}
-
-/* Mensajes románticos */
-.mensajes-romanticos {
-  margin-top: 30px;
+/* Inputs de nota */
+input.nota-input {
+  width: 50px;
+  padding: 0.25rem 0.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid var(--borgoña);
   text-align: center;
+  color: var(--gris-rosado);
+  background-color: var(--marfil-claro);
+  transition: border-color 0.3s ease;
+}
+
+input.nota-input:focus {
+  outline: none;
+  border-color: var(--rojo-vino);
+}
+
+/* Botones emoji */
+button {
+  background-color: var(--boton-fondo);
+  border: none;
+  padding: 0.35rem 0.6rem;
   font-size: 1.2rem;
-  color: var(--rojo-vino-profundo);
-  font-style: italic;
-  max-width: 500px;
+  border-radius: 6px;
+  color: var(--marfil-claro);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.15s ease;
   user-select: none;
-  line-height: 1.4;
+}
+
+button:hover {
+  background-color: var(--boton-hover);
+  transform: scale(1.1);
+}
+
+button:disabled {
+  background-color: #bbb;
+  cursor: not-allowed;
+  transform: none;
+  color: #666;
+}
+
+/* Mensaje romántico */
+#mensaje-romantico {
+  font-size: 1.1rem;
+  text-align: center;
+  min-height: 2.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  background-color: var(--marfil-claro);
+  color: var(--rojo-vino);
+  box-shadow: 0 0 8px var(--rosa-oscuro);
 }
 
 /* Firma */
 #firma {
-  margin-top: 8px;
-  font-size: 1rem;
-  color: var(--borgoña);
+  font-size: 1.2rem;
+  text-align: center;
   font-style: italic;
 }
 
-/* Modal */
-.modal {
-  display: none; /* oculto por defecto */
-  position: fixed;
-  z-index: 1000;
-  left: 0; top: 0; right: 0; bottom: 0;
-  background: rgba(123, 30, 58, 0.8);
-  backdrop-filter: blur(3px);
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  background-color: var(--marfil-claro);
-  color: var(--gris-rosado-oscuro);
-  padding: 25px 35px;
-  border-radius: 12px;
-  max-width: 380px;
-  box-shadow: 0 5px 20px rgba(155, 44, 69, 0.8);
-  text-align: center;
-  font-weight: 600;
-  font-size: 1.2rem;
-  user-select: none;
-  position: relative;
-}
-
-.modal-close {
-  position: absolute;
-  top: 8px;
-  right: 12px;
-  font-size: 1.8rem;
-  cursor: pointer;
-  color: var(--rojo-vino-profundo);
-  font-weight: bold;
-  user-select: none;
-}
-
-.modal-close:hover {
-  color: var(--borgoña);
-}
-
-/* Destellos mágicos */
-.destellos {
-  animation: destello 1.8s ease forwards;
-}
-
-@keyframes destello {
-  0%, 100% { box-shadow: 0 0 6px 2px var(--rosa-oscuro-suave); }
-  50% { box-shadow: 0 0 14px 6px var(--rojo-vino-profundo); }
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  .botones-curso button, .boton-magico {
-    font-size: 1.4rem;
-    padding: 8px 10px;
-  }
-  .curso input[type="number"] {
-    width: 50px;
-  }
-}
+/*
