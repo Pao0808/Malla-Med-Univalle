@@ -1,4 +1,6 @@
-// Definición de materias 🎓
+let hidePassed = false;
+
+// --- Datos de la malla ---
 const semestres = [
   {
     nombre: "Primer Semestre",
@@ -69,10 +71,11 @@ const semestres = [
   }
 ];
 
-// Renderizado
 const mallaDiv = document.getElementById("malla");
 
+// --- Renderizado ---
 function renderMalla() {
+  mallaDiv.innerHTML = "";
   semestres.forEach(sem => {
     const semDiv = document.createElement("div");
     semDiv.className = "semestre";
@@ -91,9 +94,11 @@ function renderMalla() {
     mallaDiv.appendChild(semDiv);
   });
 
+  loadProgress();
   desbloquear();
 }
 
+// --- Desbloquear materias ---
 function desbloquear() {
   semestres.forEach(sem => {
     sem.materias.forEach(mat => {
@@ -101,21 +106,58 @@ function desbloquear() {
       if (mat.req.every(r => document.getElementById(r).checked)) {
         if (check.disabled) {
           check.disabled = false;
-          check.parentElement.classList.add("unlocked"); // ✨ animación de desbloqueo
+          check.parentElement.classList.add("unlocked");
           setTimeout(() => check.parentElement.classList.remove("unlocked"), 700);
         }
+      }
+      // Ocultar si corresponde
+      if (hidePassed && check.checked) {
+        check.parentElement.classList.add("hidden");
+      } else {
+        check.parentElement.classList.remove("hidden");
       }
     });
   });
 }
 
-mallaDiv.addEventListener("change", desbloquear);
+mallaDiv.addEventListener("change", () => {
+  desbloquear();
+});
 
+// --- Guardar progreso ---
+function saveProgress() {
+  const progreso = {};
+  document.querySelectorAll("input[type=checkbox]").forEach(c => {
+    progreso[c.id] = c.checked;
+  });
+  localStorage.setItem("mallaMedicina", JSON.stringify(progreso));
+  alert("✅ Progreso guardado");
+}
+
+// --- Cargar progreso ---
+function loadProgress() {
+  const data = JSON.parse(localStorage.getItem("mallaMedicina") || "{}");
+  document.querySelectorAll("input[type=checkbox]").forEach(c => {
+    if (data[c.id]) {
+      c.checked = true;
+      c.disabled = false;
+    }
+  });
+}
+
+// --- Resetear ---
 function resetMalla() {
+  localStorage.removeItem("mallaMedicina");
   document.querySelectorAll("input[type=checkbox]").forEach(c => {
     c.checked = false;
     c.disabled = true;
   });
+  desbloquear();
+}
+
+// --- Ocultar aprobadas ---
+function toggleHide() {
+  hidePassed = !hidePassed;
   desbloquear();
 }
 
