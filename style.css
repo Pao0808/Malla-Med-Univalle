@@ -1,87 +1,103 @@
+/* Fuente moderna */
 body {
-  margin: 0;
-  font-family: 'Courier New', monospace;
-  background: radial-gradient(ellipse at top, #0a0f1c, #000);
-  color: #f0f0f0;
-  background-image: url('https://www.transparenttextures.com/patterns/stardust.png'),
-                    linear-gradient(to bottom, #0a0f1c, #000);
-  background-repeat: repeat, no-repeat;
-  background-size: auto, cover;
-}
-
-header {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f9c5d1, #fbc2eb, #a18cd1);
+  color: #2c2c2c;
   text-align: center;
-  padding: 2rem;
-  background: rgba(10, 10, 30, 0.9);
-  box-shadow: 0 0 15px #6c63ff;
+  padding: 20px;
+  margin: 0;
 }
 
 h1 {
-  color: #fff;
-  text-shadow: 2px 2px #bb00ff;
-  font-size: 1.8rem;
+  color: #6a0572;
+  font-size: 2.3em;
+  margin-bottom: 8px;
 }
 
-main {
-  padding: 1rem;
+.subtitle {
+  font-size: 1em;
+  color: #4b4b4b;
+  margin-bottom: 25px;
+  font-weight: 500;
 }
 
 .semestre {
-  margin-bottom: 2rem;
-  padding: 1rem;
-  background: rgba(15, 15, 35, 0.6);
-  border-left: 4px solid #6c63ff;
-  border-radius: 12px;
-  box-shadow: 0 0 10px #3d3d5c;
-}
-
-.semestre h2 {
-  color: #ffffff;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  text-shadow: 1px 1px #000;
-}
-
-.curso {
-  background-color: rgba(20, 20, 40, 0.85);
-  border: 1px solid #555;
-  border-left: 5px solid #bb00ff;
-  border-radius: 12px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 0 10px #222;
+  background: #ffffffcc;
+  border-radius: 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 18px;
+  margin: 15px auto;
+  max-width: 700px;
   transition: all 0.3s ease;
 }
 
-.curso.locked {
-  opacity: 0.3;
-  pointer-events: none;
+.semestre:hover {
+  transform: translateY(-3px);
 }
 
-.curso.unlocked {
-  border-left-color: #00ffcc;
-  box-shadow: 0 0 15px #00ffcc;
+.semestre h2 {
+  background: #a18cd1;
+  color: white;
+  border-radius: 12px;
+  padding: 8px;
+  font-size: 1.3em;
+  margin-bottom: 10px;
 }
 
-footer {
-  text-align: center;
-  padding: 1.5rem;
-  background: #111;
+.materia {
+  display: flex;
+  align-items: center;
+  margin: 6px 0;
+  padding: 6px 10px;
+  border-radius: 10px;
+  transition: background 0.3s;
+}
+
+.materia:hover {
+  background: #f3e8ff;
+}
+
+.materia input {
+  margin-right: 12px;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.materia label {
+  font-size: 1em;
+  cursor: pointer;
+  transition: color 0.3s, text-decoration 0.3s;
+}
+
+/* Cuando se marca se tacha */
+.materia input:checked + label {
+  text-decoration: line-through;
+  color: #777;
+}
+
+/* 🔥 Animación de desbloqueo */
+.materia.unlocked {
+  animation: unlock 0.7s ease-in-out;
+}
+
+@keyframes unlock {
+  0% { background: #fbc2eb; transform: scale(0.95); }
+  50% { background: #a18cd1; transform: scale(1.05); }
+  100% { background: transparent; transform: scale(1); }
 }
 
 button {
-  background: #222;
-  color: #fff;
-  border: 1px solid #444;
-  border-radius: 8px;
-  padding: 0.5rem 1.5rem;
-  margin: 0 0.5rem;
+  margin-top: 20px;
+  background: #6a0572;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 20px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1em;
   transition: all 0.3s ease;
 }
 
 button:hover {
-  background: #444;
-  color: #0ff;
+  background: #a18cd1;
 }
