@@ -9,9 +9,13 @@
   <h1>📚 Malla Curricular - Medicina</h1>
   <p class="subtitle">Interactiva • Minimalista • Estilo Pastel Tech 💜</p>
 
-  <div id="malla"></div>
+  <div class="botones">
+    <button onclick="saveProgress()">💾 Guardar Progreso</button>
+    <button onclick="resetMalla()">🔄 Reiniciar Malla</button>
+    <button onclick="toggleHide()">🙈 Ocultar Aprobadas</button>
+  </div>
 
-  <button onclick="resetMalla()">🔄 Reiniciar Malla</button>
+  <div id="malla"></div>
 
   <script src="script.js"></script>
 </body>
