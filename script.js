@@ -156,12 +156,9 @@ function renderMalla() {
 function verificarAprobado5to() {
   const quintoAno = semestres.find(s => s.nombre.includes("Quinto Año"));
   if (!quintoAno) return;
-
   const todasAprobadas = quintoAno.materias.every(m => document.getElementById(m.id)?.checked);
-
   if (todasAprobadas) {
     if (!localStorage.getItem("aprobado5to")) {
-      // 💌 Mensaje romántico mágico
       mostrarMensaje("🎓 ¡Mi amor, terminaste el 5to año! Ya puedes iniciar tu internado. 💖 Te ama tu Leo 💌");
     }
     localStorage.setItem("aprobado5to", "true");
@@ -184,14 +181,12 @@ function desbloquear() {
   semestres.forEach(sem => {
     sem.materias.forEach(mat => {
       const check = document.getElementById(mat.id);
-      if (mat.req.every(requisitoCumplido)) {
-        if (check.disabled) {
-          check.disabled = false;
-          check.parentElement.classList.add("unlocked");
-          setTimeout(() => check.parentElement.classList.remove("unlocked"), 700);
-        }
+      const puedeDesbloquear = mat.req.every(requisitoCumplido);
+      if (puedeDesbloquear && check.disabled) {
+        check.disabled = false;
+        check.parentElement.classList.add("unlocked");
+        setTimeout(() => check.parentElement.classList.remove("unlocked"), 700);
       }
-
       if (hidePassed && check.checked) {
         check.parentElement.classList.add("hidden");
       } else {
@@ -219,6 +214,7 @@ function loadProgress() {
       c.disabled = false;
     }
   });
+  desbloquear(); // 💫 Asegura que Embriología y demás se desbloqueen al cargar
 }
 
 function resetMalla() {
