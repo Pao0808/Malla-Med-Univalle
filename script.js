@@ -214,7 +214,7 @@ function loadProgress() {
       c.disabled = false;
     }
   });
-  desbloquear(); // 💫 Asegura que Embriología y demás se desbloqueen al cargar
+  desbloquear();
 }
 
 function resetMalla() {
@@ -231,6 +231,13 @@ function toggleHide() {
   hidePassed = !hidePassed;
   desbloquear();
 }
+
+// --- EVENTO GLOBAL ---
+mallaDiv.addEventListener("change", e => {
+  if (e.target.matches("input[type=checkbox]")) {
+    desbloquear();
+  }
+});
 
 // --- MENSAJE ROMÁNTICO MÁGICO ---
 function mostrarMensaje(texto) {
